@@ -1,29 +1,15 @@
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { defineConfig } from 'vite'
-import tsConfigPaths from 'vite-tsconfig-paths'
 import viteReact from '@vitejs/plugin-react'
+import tsConfigPaths from 'vite-tsconfig-paths'
 
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
+
+// https://vitejs.dev/config/
 export default defineConfig({
-  optimizeDeps: {
-    needsInterop: ['react-use']
-  },
-  server: {
-    port: 3000,
-  },
+  base: './',
   plugins: [
-    tsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
-    tanstackStart({
-      customViteReactPlugin: true,
-      spa: {
-        enabled: true,
-        prerender: {
-          enabled: true,
-          outputPath: 'index.html',
-        },
-      }
-    }),
+    tsConfigPaths({projects: ['./tsconfig.json']}),
+    tanstackRouter({ autoCodeSplitting: true }),
     viteReact(),
   ],
 })

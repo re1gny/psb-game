@@ -1,4 +1,4 @@
-import {createFileRoute, Outlet, useRouter} from '@tanstack/react-router'
+import {createFileRoute} from '@tanstack/react-router'
 import bg from '~/assets/images/bg.png'
 import {AnimatePresence, motion} from "motion/react";
 import monsters from "~/assets/images/final/monsters.png";

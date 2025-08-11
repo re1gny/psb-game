@@ -1,4 +1,4 @@
-import {AnimatePresence, HTMLMotionProps, motion} from "motion/react";
+import {HTMLMotionProps, motion} from "motion/react";
 import { CharacterCardFront } from "~/shared/ui/CharacterCardFront";
 import { Character } from "~/shared/constants/characters";
 import {useCallback, useMemo} from "react";

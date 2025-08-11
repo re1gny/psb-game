@@ -1,5 +1,5 @@
-import {useEffect, useRef, useState} from "react";
-import {AnimatePresence, HTMLMotionProps, motion, useMotionValue, useTransform} from "motion/react";
+import {useState} from "react";
+import {AnimatePresence, HTMLMotionProps, motion} from "motion/react";
 import { CharacterCardFront } from "~/shared/ui/CharacterCardFront";
 import { Character } from "~/shared/constants/characters";
 import newOverlay from '~/assets/images/cards/new-overlay.png';

@@ -1,8 +1,7 @@
 import {useState} from "react";
-import {useRouter, useLocation} from "@tanstack/react-router";
+import {useLocation} from "@tanstack/react-router";
 
 export const useStep = (key: string, initialStep: number) => {
-  const router = useRouter();
   const location = useLocation();
   const [step, setStep] = useState(import.meta.env.MODE === "development" ? (location.search as any)[key] ?? initialStep : initialStep);
 

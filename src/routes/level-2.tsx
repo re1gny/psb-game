@@ -1,5 +1,5 @@
 import {createFileRoute} from '@tanstack/react-router'
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import { LEVEL_2 } from '~/shared/constants/levels';
 import {LevelGame} from "~/widgets/LevelGame";
 

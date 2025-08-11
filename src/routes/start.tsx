@@ -1,6 +1,6 @@
 import {createFileRoute, useRouter} from '@tanstack/react-router'
 import bg from '~/assets/images/bg.png'
-import {AnimatePresence, motion, stagger, Variants} from "motion/react";
+import {AnimatePresence, motion, stagger, type Variants} from "motion/react";
 import lightning from "~/assets/images/start/lightning.png";
 import lightningPart1 from "~/assets/images/start/lightning-part-1.png";
 import lightningPart2 from "~/assets/images/start/lightning-part-2.png";

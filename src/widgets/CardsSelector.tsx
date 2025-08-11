@@ -1,9 +1,9 @@
-import {AnimatePresence, HTMLMotionProps, motion, usePresenceData, Variants} from "motion/react";
-import {ALL_CHARACTERS, Character} from "~/shared/constants/characters";
+import {AnimatePresence, type HTMLMotionProps, motion, usePresenceData} from "motion/react";
+import {ALL_CHARACTERS, type Character} from "~/shared/constants/characters";
 import { CloseButton } from "~/shared/ui/CloseButton";
 import { useProgressStore } from "~/store/progressStore";
 import {CharacterCardBack} from "~/shared/ui/CharacterCardBack";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import { Button } from "~/shared/ui/Button";
 import overlay from "~/assets/images/overlay.png";
 import {useStep} from "~/shared/lib/useStep";

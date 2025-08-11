@@ -6,7 +6,7 @@ import {LivesScore} from "~/widgets/LivesScore";
 import {AnimatePresence, HTMLMotionProps, motion} from "motion/react";
 import overlay from "~/assets/images/overlay.png";
 import {Button} from "~/shared/ui/Button";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {CardsStack} from "~/widgets/CardsStack";
 import { CHARACTER_1, CHARACTER_2, CHARACTER_3, CHARACTER_6, CHARACTER_8 } from '~/shared/constants/characters';
 import { MAX_LIVES } from '~/store/progressStore';

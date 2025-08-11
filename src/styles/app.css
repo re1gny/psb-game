@@ -33,6 +33,10 @@
     @apply max-lg:bg-[linear-gradient(180.06deg,#2C2D84_24.57%,#0F102F_90.05%)]
   }
 
+    #app {
+        height: 100%;
+    }
+
   * {
     outline: none;
   }
