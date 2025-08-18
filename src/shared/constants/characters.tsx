@@ -102,7 +102,7 @@ export const CHARACTER_1: Character = {
     ],
     cons: ['Финансовая грамотность заканчивается в отделе со скидками на эстетичные вещи'],
     backSign: (
-        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='w-[calc(18px*var(--size-ratio))] h-[calc(17px*var(--size-ratio))]' viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.77456 1.33974C8.27209 0.364826 9.66512 0.364825 10.1627 1.33974L11.6809 4.31468C11.8756 4.69636 12.2412 4.96192 12.6644 5.02923L15.9628 5.55382C17.0438 5.72574 17.4743 7.05059 16.7008 7.82504L14.3406 10.1882C14.0378 10.4914 13.8982 10.9211 13.965 11.3444L14.4853 14.6436C14.6559 15.7247 13.5289 16.5435 12.5533 16.0473L9.57644 14.5329C9.1945 14.3386 8.7427 14.3386 8.36077 14.5329L5.38389 16.0473C4.40834 16.5435 3.28135 15.7247 3.45188 14.6436L3.97225 11.3444C4.03901 10.9211 3.8994 10.4914 3.59659 10.1882L1.23641 7.82504C0.462953 7.05059 0.893422 5.72574 1.97437 5.55382L5.27285 5.02923C5.69605 4.96192 6.06156 4.69636 6.25635 4.31468L7.77456 1.33974Z" fill="#872900"/>
         </svg>
     ),
@@ -130,7 +130,7 @@ export const CHARACTER_2: Character = {
         'Творческий подход\nне её сильная сторона — предпочитает проверенные временем решения',
     ],
     backSign: (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='w-[calc(16px*var(--size-ratio))] h-[calc(16px*var(--size-ratio))]' viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="8" cy="8" r="8" fill="#92006C"/>
         </svg>
     ),
@@ -159,7 +159,7 @@ export const CHARACTER_3: Character = {
         'Паникует, если комбинация кнопок «включить-выключить»\nне срабатывает'
     ],
     backSign: (
-      <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className='w-[calc(13px*var(--size-ratio))] h-[calc(16px*var(--size-ratio))]' viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.53391 15.2906C2.77937 15.2906 0.62207 12.2206 0.62207 7.74001C0.62207 3.25946 2.77937 0.189453 6.53391 0.189453C10.2884 0.189453 12.4457 3.25946 12.4457 7.74001C12.4457 12.2206 10.2884 15.2906 6.53391 15.2906ZM6.53391 12.0546C8.27634 12.0546 9.12682 10.5404 9.12682 7.74001C9.12682 4.93967 8.27634 3.42541 6.53391 3.42541C4.79147 3.42541 3.941 4.93967 3.941 7.74001C3.941 10.5404 4.79147 12.0546 6.53391 12.0546Z" fill="#2C2D84"/>
       </svg>
     ),
@@ -189,8 +189,8 @@ export const CHARACTER_4: Character = {
       'Не доверяет облачным хранилищам'
     ],
     backSign: (
-      <svg width="21" height="9" viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 6.02222C4.31414 3.74158 10.9539 0.548686 19 6.02222" stroke="#872900" strokeWidth="5.57766"/>
+      <svg className='w-[calc(21px*var(--size-ratio))] h-[calc(9px*var(--size-ratio))]' viewBox="0 0 21 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 6.02222C4.31414 3.74158 10.9539 0.548686 19 6.02222" stroke="#872900" className='stroke-[calc(5.57766px*var(--size-ratio))]' />
       </svg>
     ),
     backImageY: 56,
@@ -218,8 +218,8 @@ export const CHARACTER_5: Character = {
       'Публичные выступления — её личный ад: она не выносит\nвзгляды аудитории',
     ],
     backSign: (
-      <svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 2.30182C4.0454 1.50243 10.1362 2.32906 10.1362 7.67352C10.1362 3.3911 12.4968 1.14557 18.7916 2.30182" stroke="#92006C" strokeWidth="3.63093"/>
+      <svg className='w-[calc(20px*var(--size-ratio))] h-[calc(8px*var(--size-ratio))]' viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 2.30182C4.0454 1.50243 10.1362 2.32906 10.1362 7.67352C10.1362 3.3911 12.4968 1.14557 18.7916 2.30182" stroke="#92006C" className='stroke-[calc(3.63093px*var(--size-ratio))]' />
       </svg>
     ),
     backImageY: 37,
@@ -246,7 +246,7 @@ export const CHARACTER_6: Character = {
       'Скептически относится\nк психологии: считает, что\n«само пройдёт» и заедает стресс чем‑нибудь сладким',
     ],
     backSign: (
-      <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className='w-[calc(16px*var(--size-ratio))] h-[calc(15px*var(--size-ratio))]' viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.2295 7.37305L12.9414 9.66113L9.37109 6.09082V14.8145H6.13867V6.29492L2.77148 9.66211L0.483398 7.37402L7.85449 0.000976562L7.85645 0L15.2295 7.37305Z" fill="#2C2D84"/>
       </svg>
     ),
@@ -275,7 +275,7 @@ export const CHARACTER_7: Character = {
       'Слепо доверяет GPT как своему лучшему другу, даже если тот утверждает, что столица\nТурции — Стамбул'
     ],
     backSign: (
-      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className='w-[calc(15px*var(--size-ratio))] h-[calc(11px*var(--size-ratio))]' viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.83186 0L0 11H15L7.83186 0Z" fill="#872900"/>
       </svg>
     ),
@@ -303,8 +303,8 @@ export const CHARACTER_8: Character = {
       'Доверяет только бумажным картам, даже если они были напечатаны в 2015 году'
     ],
     backSign: (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="8" cy="8" r="5.5" stroke="#92006C" strokeWidth="5"/>
+      <svg className='w-[calc(16px*var(--size-ratio))] h-[calc(16px*var(--size-ratio))]' viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5.5" stroke="#92006C" className='stroke-[calc(5px*var(--size-ratio))]' />
       </svg>
     ),
     backImageY: 50,
@@ -332,7 +332,7 @@ export const CHARACTER_9: Character = {
       'Боится Excel-таблиц, а формулы ВПР снятся ей в кошмарах'
     ],
     backSign: (
-      <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className='w-[calc(16px*var(--size-ratio))] h-[calc(14px*var(--size-ratio))]' viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.5928 0C13.7664 0 15.5278 1.76011 15.5312 3.93262C15.5314 3.9346 15.5331 3.93648 15.5332 3.93848C15.5632 4.98886 15.1206 5.85223 14.8955 6.15234L14.7158 6.33887C14.538 6.56987 14.3352 6.78043 14.1113 6.9668L8.03997 13.2795C7.92126 13.403 7.7241 13.4041 7.60403 13.282L1.19922 6.76855C1.00623 6.58166 0.83233 6.37516 0.680664 6.15234C0.432577 5.78784 0.243867 5.37948 0.128906 4.94141C0.100508 4.83318 0.076825 4.72298 0.0576172 4.61133L0.0546875 4.58691C0.0358853 4.47422 0.0234637 4.36785 0.0146484 4.27148C0.00547948 4.16184 0 4.05049 0 3.93848C0.000244734 1.76343 1.76405 0.000255947 3.93945 0C5.35143 0 6.58937 0.742897 7.28463 1.85898C7.45291 2.12911 8.07833 2.12911 8.24664 1.859C8.94213 0.74286 10.1807 3.5702e-05 11.5928 0Z" fill="#2C2D84"/>
       </svg>
     ),
@@ -361,8 +361,8 @@ export const CHARACTER_10: Character = {
       'Постоянно переделывает\nшаблон вместо того,\nчтобы действовать по нему'
     ],
     backSign: (
-      <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.48242 6.13934L8.30337 11.2488L16.5174 2" stroke="#872900" strokeWidth="4.8094"/>
+      <svg className='w-[calc(19px*var(--size-ratio))] h-[calc(15px*var(--size-ratio))]' viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.48242 6.13934L8.30337 11.2488L16.5174 2" stroke="#872900" className='stroke-[calc(4.8094px*var(--size-ratio))]' />
       </svg>
     ),
     backImageY: 45,

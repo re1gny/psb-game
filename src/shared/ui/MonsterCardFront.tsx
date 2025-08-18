@@ -21,37 +21,37 @@ export const MonsterCardFront = (props: Props) => {
     <div 
       style={{
         ...style,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `calc(${width}px*var(--size-ratio))`,
+        height: `calc(${height}px*var(--size-ratio))`,
         '--scale': scale,
       } as CSSProperties}
       {...rest}
     >
       <div
-        className={`rounded-[8.79px] border-[1.19px] border-[#FFFFFF] bg-cover pt-[17.58px] pb-[23px] pl-[20px] pr-[20px]`}
+        className={`rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.19px*var(--size-ratio))] border-[#FFFFFF] bg-cover pt-[calc(17.58px*var(--size-ratio))] pb-[calc(23px*var(--size-ratio))] pl-[calc(20px*var(--size-ratio))] pr-[calc(20px*var(--size-ratio))]`}
         style={{
-          width: `${TARGET_WIDTH}px`,
-          height: `${TARGET_HEIGHT}px`,
+          width: `calc(${TARGET_WIDTH}px*var(--size-ratio))`,
+          height: `calc(${TARGET_HEIGHT}px*var(--size-ratio))`,
           transform: `scale(${scale})`,
           backgroundImage: `url(${baseBg})`,
           transformOrigin: 'top left',
         }}
       >
         <div 
-          className="relative w-full h-full rounded-[8.79px] border-[1.76px] border-[#FFFFFF] bg-[#000000] pt-[100.72px] overflow-hidden"
+          className="relative w-full h-full rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] border-[#FFFFFF] bg-[#000000] pt-[calc(100.72px*var(--size-ratio))] overflow-hidden"
           style={{
             backgroundImage: `url(${monster.subBg})`,
-            backgroundPositionY: '54px',
+            backgroundPositionY: 'calc(54px*var(--size-ratio))',
             backgroundSize: '100%',
           }}
         >
-          <div className="flex items-center justify-center absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[100.72px] rounded-[8.79px] border-[1.76px] bg-[#000000] px-[14px]">
-            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
+          <div className="flex items-center justify-center absolute top-[calc(-1px*var(--size-ratio))] left-[calc(-1px*var(--size-ratio))] w-[calc(100%+calc(2px*var(--size-ratio)))] h-[calc(100.72px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#000000] px-[calc(14px*var(--size-ratio))]">
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[calc(18px*var(--size-ratio))] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
           </div>
           <div className="flex items-center justify-center w-full h-full">
             <img style={{
-              width: `${monster.imageWidth}px`,
-              height: `${monster.imageHeight}px`,
+              width: `calc(${monster.imageWidth}px*var(--size-ratio))`,
+              height: `calc(${monster.imageHeight}px*var(--size-ratio))`,
             }} src={monster.image} alt="" />
           </div>
         </div>

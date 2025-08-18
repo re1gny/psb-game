@@ -13,11 +13,11 @@ export const LivesScore = (props: Props) => {
 
   return (
     <motion.div
-      className={`flex items-center gap-[7px] px-[8px] w-[127px] h-[48px] rounded-[10px] border-[#000000] border-2 bg-[#FFFFFF] ${className ?? ''}`}
+      className={`flex items-center gap-[calc(7px*var(--size-ratio))] px-[calc(8px*var(--size-ratio))] w-[calc(127px*var(--size-ratio))] h-[calc(48px*var(--size-ratio))] rounded-[calc(10px*var(--size-ratio))] border-[#000000] border-2 bg-[#FFFFFF] ${className ?? ''}`}
       {...rest}
     >
       {Array.from({ length: MAX_LIVES }).map((_, index) => (
-        <motion.div key={index} className={'relative w-[31px] h-[28px]'}>
+        <motion.div key={index} className={'relative w-[calc(31px*var(--size-ratio))] h-[calc(28px*var(--size-ratio))]'}>
           <AnimatePresence>
             <motion.img
               key={index < remainingLives ? heart : heartEmpty}

@@ -33,7 +33,7 @@ function Component() {
 
   return (
     <div className={'relative bg-cover h-full'} style={{ backgroundImage: `url(${bg})` }} onClick={click}>
-      <div className={'absolute top-0 left-0 w-full h-full'}>
+      <div className={'absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))]'}>
         <AnimatePresence>
           {step === 1 && (
             <motion.img
@@ -41,7 +41,7 @@ function Component() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className={'absolute top-[30px] left-[-155px] h-[650.75px] w-[684px]'}
+              className={'absolute top-[calc(30px*var(--size-ratio))] left-[calc(-155px*var(--size-ratio))] h-[calc(650.75px*var(--size-ratio))] w-[calc(684px*var(--size-ratio))]'}
               src={monsters}
               alt=""
             />
@@ -53,7 +53,7 @@ function Component() {
               initial={{ opacity: 0, scale: 0.6, y: '20%' }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className={'absolute top-[-95px] left-[-215px] h-[622px] w-[728.18px]'}
+              className={'absolute top-[calc(-95px*var(--size-ratio))] left-[calc(-215px*var(--size-ratio))] h-[calc(622px*var(--size-ratio))] w-[calc(728.18px*var(--size-ratio))]'}
               src={fireworks}
               alt=""
             />
@@ -66,7 +66,7 @@ function Component() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className={'absolute top-[237px] left-[-84px] h-[580px] w-[569.83px]'}
+              className={'absolute top-[calc(237px*var(--size-ratio))] left-[calc(-84px*var(--size-ratio))] h-[calc(580px*var(--size-ratio))] w-[calc(569.83px*var(--size-ratio))]'}
               src={characters}
               alt=""
             />
@@ -78,10 +78,10 @@ function Component() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className={'flex flex-col items-center absolute top-[84px] left-[20px] w-[calc(100%-40px)]'}
+              className={'flex flex-col items-center absolute top-[calc(84px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
             >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-full z-10'}>
-                <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] w-full z-10'}>
+                <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
                   Ты только что доказал, что идеальная команда зависит{'\n'}не от возраста, а от правильного сочетания навыков.{' '}<span className={'font-extrabold text-[#EA5616]'}>Креативность, опыт и командная работа</span>{' '}—{'\n'}вот что помогает побеждать{'\n'}любых монстров!
                 </p>
               </motion.div>
@@ -94,13 +94,13 @@ function Component() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className={'flex flex-col items-center absolute top-[114px] left-[20px] w-[calc(100%-40px)]'}
+              className={'flex flex-col items-center absolute top-[calc(114px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
             >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-full z-10'}>
-                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[20px] leading-[108%] tracking-normal text-center text-[#EA5616]'}>
+              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] w-full z-10'}>
+                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[108%] tracking-normal text-center text-[#EA5616]'}>
                   Теперь твоя очередь применить навыки{'\n'}на практике!
                 </h3>
-                <p className={'whitespace-pre-line mt-[12px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                <p className={'whitespace-pre-line mt-[calc(12px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                   Команда ПСБ ищет именно таких героев — азартных и смелых.{'\n'}Тех, кто умеет:
                 </p>
                 <ul className={'mt-3'}>
@@ -110,22 +110,22 @@ function Component() {
                     'Не бояться нестандартных\nи страшных задач',
                   ].map((item, index) => (
                     <li key={index} className={`flex items-center ${index === 0 ? '' : 'mt-3'} `}>
-                      <div className={'shrink-0 flex items-center justify-center w-[31px] h-full translate-x-[-4px]'}>
-                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div className={'shrink-0 flex items-center justify-center w-[calc(31px*var(--size-ratio))] h-full translate-x-[calc(-4px*var(--size-ratio))]'}>
+                        <svg className={'w-[calc(18px*var(--size-ratio))] h-[calc(17pxvar(--size-ratio))]'} viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M7.88784 1.33974C8.38537 0.364826 9.7784 0.364825 10.2759 1.33974L11.7941 4.31468C11.9889 4.69636 12.3544 4.96192 12.7776 5.02923L16.0761 5.55382C17.1571 5.72574 17.5875 7.05059 16.8141 7.82504L14.4539 10.1882C14.1511 10.4914 14.0115 10.9211 14.0782 11.3444L14.5986 14.6436C14.7691 15.7247 13.6422 16.5435 12.6666 16.0473L9.68972 14.5329C9.30779 14.3386 8.85598 14.3386 8.47405 14.5329L5.49717 16.0473C4.52162 16.5435 3.39463 15.7247 3.56516 14.6436L4.08553 11.3444C4.15229 10.9211 4.01268 10.4914 3.70987 10.1882L1.34969 7.82504C0.576234 7.05059 1.0067 5.72574 2.08765 5.55382L5.38614 5.02923C5.80933 4.96192 6.17484 4.69636 6.36963 4.31468L7.88784 1.33974Z" fill="#17185D"/>
                         </svg>
                       </div>
-                      <span className={`whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]`}>
+                      <span className={`whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]`}>
                         {item}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className={'whitespace-pre-line mt-3 font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                <p className={'whitespace-pre-line mt-3 font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                   Хочешь попробовать? Жми{'\n'}«Хочу в команду», если готов{'\n'}к настоящим приключениям
                 </p>
               </motion.div>
-              <Button className={'mt-[20px]'} onClick={finish}>
+              <Button className={'mt-[calc(20px*var(--size-ratio))]'} onClick={finish}>
                 Хочу в команду
               </Button>
             </motion.div>

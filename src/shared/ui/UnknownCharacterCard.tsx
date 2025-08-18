@@ -24,17 +24,17 @@ export const UnknownCharacterCard = (props: Props) => {
     <div 
       style={{
         ...style,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `calc(${width}px*var(--size-ratio))`,
+        height: `calc(${height}px*var(--size-ratio))`,
         '--scale': scale,
       } as CSSProperties}
       {...rest}
     >
       <div
-        className={`rounded-[8.79px] border-[1.19px] bg-cover pt-[17.58px] pb-[23px] pl-[20px] pr-[20px]`}
+        className={`rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.19px*var(--size-ratio))] bg-cover pt-[calc(17.58px*var(--size-ratio))] pb-[calc(23px*var(--size-ratio))] pl-[calc(20px*var(--size-ratio))] pr-[calc(20px*var(--size-ratio))]`}
         style={{
-          width: `${TARGET_WIDTH}px`,
-          height: `${TARGET_HEIGHT}px`,
+          width: `calc(${TARGET_WIDTH}px*var(--size-ratio))`,
+          height: `calc(${TARGET_HEIGHT}px*var(--size-ratio))`,
           transform: `scale(${scale})`,
           backgroundImage: `url(${character.unknownImage})`,
           transformOrigin: 'top left',
@@ -42,7 +42,7 @@ export const UnknownCharacterCard = (props: Props) => {
         }}
       >
         <div 
-          className="relative w-full h-full rounded-[8.79px] border-[1.76px] overflow-hidden"
+          className="relative w-full h-full rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] overflow-hidden"
           style={{
             borderColor: character.borderColor,
           }}

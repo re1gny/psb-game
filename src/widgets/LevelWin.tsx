@@ -1,11 +1,12 @@
 import {useNavigate} from '@tanstack/react-router'
+import {AnimatePresence, motion} from "motion/react";
+import {useEffect, useRef, useState} from "react";
+import type { Level} from "~/shared/constants/levels";
 import { Path } from '~/widgets/Path';
 import {WinCards} from "~/widgets/WinCards";
 import {ALL_CHARACTERS} from "~/shared/constants/characters";
-import {ALL_LEVELS, Level} from "~/shared/constants/levels";
-import {AnimatePresence, motion} from "motion/react";
+import {ALL_LEVELS} from "~/shared/constants/levels";
 import {useStep} from "~/shared/lib/useStep";
-import {useEffect, useState} from "react";
 import {NewCards} from "~/widgets/NewCards";
 
 type Props = {
@@ -16,6 +17,7 @@ export function LevelWin({ level }: Props) {
   const [step, next] = useStep(`level-${level.id}-win`, 0)
   const navigate = useNavigate();
   const [finished, setFinished] = useState(false);
+  const collectionRef = useRef<HTMLButtonElement>(null);
 
   const winCards = ALL_CHARACTERS.filter((item) => level.correctCharacters.includes(item.id));
   const newCards = ALL_CHARACTERS.filter((item) => level.winNewCharacters.includes(item.id));
@@ -53,7 +55,7 @@ export function LevelWin({ level }: Props) {
 
   return (
     <>
-      <Path withRules={false} blur={step === 1 || step === 3} pulse={finished} />
+      <Path withRules={false} blur={step === 1 || step === 3} pulse={finished} collectionRef={collectionRef} />
       <AnimatePresence>
         {step === 1 && (
           <WinCards cards={winCards} />
@@ -61,7 +63,7 @@ export function LevelWin({ level }: Props) {
       </AnimatePresence>
       <AnimatePresence>
         {(step === 3 || step === 4) && !isLastLevel && (
-          <NewCards cards={newCards} onFinish={finish} onNext={next} />
+          <NewCards cards={newCards} onFinish={finish} onNext={next} collectionRef={collectionRef} />
         )}
       </AnimatePresence>
     </>

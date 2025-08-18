@@ -118,7 +118,7 @@ export const CardsSelector = (props: Props) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: '20%' }}
           transition={{ duration: 0.2, ease: 'easeInOut' }}
-          className={`absolute top-0 left-0 w-full h-full overflow-auto z-30 p-[20px] ${className ?? ''}`}
+          className={`absolute top-0 left-0 w-full h-full overflow-auto z-30 p-[calc(20px*var(--size-ratio))] ${className ?? ''}`}
           {...rest}
         >
           <AnimatePresence>
@@ -128,9 +128,9 @@ export const CardsSelector = (props: Props) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
-                className={`absolute top-[20px] left-[20px] w-[calc(100%-40px)] flex items-center justify-between transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
+                className={`absolute top-[calc(20px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))] flex items-center justify-between transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
               >
-                <span className="font-inter font-semibold text-[20px] leading-[100%] text-[#FFFFFF]">
+                <span className="font-inter font-semibold text-[calc(20px*var(--size-ratio))] leading-[100%] text-[#FFFFFF]">
                   {checkedCharacters.length}/{MAX_CHECKED_CHARACTERS}
                 </span>
                 <CloseButton className="ml-auto" onClick={onClose} />
@@ -144,10 +144,10 @@ export const CardsSelector = (props: Props) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: '-20%' }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
-                className={`absolute top-[20px] left-0 w-full flex flex-col items-center transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
+                className={`absolute top-[calc(20px*var(--size-ratio))] left-0 w-full flex flex-col items-center transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
               >
-                <div className="relative w-[265px] h-[92px] flex flex-col items-center">
-                  <div className="w-full h-full bg-[#FFFFFF] rounded-[7.41px] border-[1.48px] border-[#000000]">
+                <div className="relative w-[calc(265px*var(--size-ratio))] h-[calc(92px*var(--size-ratio))] flex flex-col items-center">
+                  <div className="w-full h-full bg-[#FFFFFF] rounded-[calc(7.41px*var(--size-ratio))] border-[calc(1.48px*var(--size-ratio))] border-[#000000]">
                     <AnimatePresence initial={false}>
                       <motion.div 
                         key={step === 1 || step === 2 ? '12' : '34'} 
@@ -155,15 +155,15 @@ export const CardsSelector = (props: Props) => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="absolute top-0 left-0 w-full h-full py-[10px] px-[20px] flex items-center justify-center"
+                        className="absolute top-0 left-0 w-full h-full py-[calc(10px*var(--size-ratio))] px-[calc(20px*var(--size-ratio))] flex items-center justify-center"
                       >
-                        <p className="whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-center text-[#000000]">
+                        <p className="whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-center text-[#000000]">
                           {step === 1 || step === 2 ? 'Чтобы выбрать героя\nдля сражения, отмечай\nего галочкой' : 'Если захочешь поменять\nгероя, нажми на галочку\nеще раз'}
                         </p>
                       </motion.div>
                     </AnimatePresence>
                   </div>
-                  <svg className="absolute left-[23px] bottom-[-3px] translate-y-full" width="16" height="38" viewBox="0 0 16 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="absolute left-[calc(23px*var(--size-ratio))] bottom-[calc(-3px*var(--size-ratio))] translate-y-full w-[calc(16px*var(--size-ratio))] h-[calc(38px*var(--size-ratio))]" viewBox="0 0 16 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 1C9 0.447715 8.55228 0 8 0C7.44772 0 7 0.447715 7 1H8H9ZM7.29289 37.7071C7.68342 38.0976 8.31658 38.0976 8.70711 37.7071L15.0711 31.3431C15.4616 30.9526 15.4616 30.3195 15.0711 29.9289C14.6805 29.5384 14.0474 29.5384 13.6569 29.9289L8 35.5858L2.34315 29.9289C1.95262 29.5384 1.31946 29.5384 0.928932 29.9289C0.538408 30.3195 0.538408 30.9526 0.928932 31.3431L7.29289 37.7071ZM8 1H7V37H8H9V1H8Z" fill="white"/>
                   </svg>
                 </div>
@@ -173,9 +173,9 @@ export const CardsSelector = (props: Props) => {
           <motion.div 
             animate={{ y: isRules ? 70 : 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className={`absolute top-[84px] left-[20px] w-[calc(100%-40px)] flex flex-col items-center transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
+            className={`absolute top-[calc(84px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))] flex flex-col items-center transition-[filter] duration-200 ${confirmOpened ? 'blur pointer-events-none' : ''}`}
           >
-            <motion.div className={`relative w-full h-[493px] flex items-center justify-center`}>
+            <motion.div className={`relative w-full h-[calc(493px*var(--size-ratio))] flex items-center justify-center`}>
               <AnimatePresence>
                 {hasPrev && !isRules && (
                   <motion.div
@@ -183,12 +183,12 @@ export const CardsSelector = (props: Props) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className={'absolute left-[-8px] top-1/2 -translate-y-1/2 rotate-180 p-[8px] cursor-pointer z-20'}
+                    className={'absolute left-[calc(-8px*var(--size-ratio))] top-1/2 -translate-y-1/2 rotate-180 p-[calc(8px*var(--size-ratio))] cursor-pointer z-20'}
                     onClick={prev}
                   >
-                    <svg width="41" height="42" viewBox="0 0 41 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <mask id="path-1-outside-1_621_6663" maskUnits="userSpaceOnUse" x="-0.0341797" y="0" width="41" height="42" fill="black">
-                        <rect fill="white" x="-0.0341797" width="41" height="42"/>
+                    <svg className='w-[calc(41px*var(--size-ratio))] h-[calc(42px*var(--size-ratio))]' viewBox="0 0 41 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <mask id="path-1-outside-1_621_6663" maskUnits="userSpaceOnUse" x="-0.0341797" y="0" className="w-full h-full" fill="black">
+                        <rect fill="white" x="-0.0341797" className="w-full h-full" />
                         <path d="M20.0664 38.8008L14.5107 33.2461L23.1787 24.5781H2V16.7305H22.6836L14.5088 8.55566L20.0635 3L37.9639 20.8945L37.9619 20.8965L37.9658 20.9014L20.0664 38.8008Z"/>
                       </mask>
                       <path d="M20.0664 38.8008L14.5107 33.2461L23.1787 24.5781H2V16.7305H22.6836L14.5088 8.55566L20.0635 3L37.9639 20.8945L37.9619 20.8965L37.9658 20.9014L20.0664 38.8008Z" fill="white"/>
@@ -217,12 +217,12 @@ export const CardsSelector = (props: Props) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className={'absolute right-[-8px] top-1/2 -translate-y-1/2 p-[8px] cursor-pointer z-20'}
+                    className={'absolute right-[calc(-8px*var(--size-ratio))] top-1/2 -translate-y-1/2 p-[calc(8px*var(--size-ratio))] cursor-pointer z-20'}
                     onClick={next}
                   >
-                    <svg width="41" height="42" viewBox="0 0 41 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <mask id="path-1-outside-1_621_6663" maskUnits="userSpaceOnUse" x="-0.0341797" y="0" width="41" height="42" fill="black">
-                        <rect fill="white" x="-0.0341797" width="41" height="42"/>
+                    <svg className='w-[calc(41px*var(--size-ratio))] h-[calc(42px*var(--size-ratio))]' viewBox="0 0 41 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <mask id="path-1-outside-1_621_6663" maskUnits="userSpaceOnUse" x="-0.0341797" y="0" className="w-full h-full" fill="black">
+                        <rect fill="white" x="-0.0341797" className="w-full h-full" />
                         <path d="M20.0664 38.8008L14.5107 33.2461L23.1787 24.5781H2V16.7305H22.6836L14.5088 8.55566L20.0635 3L37.9639 20.8945L37.9619 20.8965L37.9658 20.9014L20.0664 38.8008Z"/>
                       </mask>
                       <path d="M20.0664 38.8008L14.5107 33.2461L23.1787 24.5781H2V16.7305H22.6836L14.5088 8.55566L20.0635 3L37.9639 20.8945L37.9619 20.8965L37.9658 20.9014L20.0664 38.8008Z" fill="white"/>
@@ -239,7 +239,7 @@ export const CardsSelector = (props: Props) => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: 'easeInOut' }}
-                  className="mt-[20px] w-full flex justify-center"
+                  className="mt-[calc(20px*var(--size-ratio))] w-full flex justify-center"
                 >
                   <Button 
                     disabled={checkedCharacters.length < MAX_CHECKED_CHARACTERS} 
@@ -265,20 +265,22 @@ export const CardsSelector = (props: Props) => {
           </AnimatePresence>
           <AnimatePresence>
             {confirmOpened && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className={`absolute top-[185px] left-[20px] w-[calc(100%-40px)] flex flex-col items-center z-30`}
-              >
-                <div className="w-full bg-[#FFFFFF] rounded-[7.41px] border-[1.48px] border-[#000000] p-[20px]">
-                  <p className="whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]">
-                    Ты уверен в выборе героев?{'\n'}После нажатия этой кнопки{'\n'}ты не сможешь их поменять
-                  </p>
-                </div>
-                <Button className={'mt-[20px]'} onClick={apply}>Да, уверен</Button>
-                <Button className={'mt-[20px]'} secondary onClick={() => setConfirmOpened(false)}>Нет, хочу поменять</Button>
-              </motion.div>
+              <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full z-30'}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className={`absolute top-[calc(185px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))] flex flex-col items-center`}
+                >
+                  <div className="w-full bg-[#FFFFFF] rounded-[calc(7.41px*var(--size-ratio))] border-[calc(1.48px*var(--size-ratio))] border-[#000000] p-[calc(20px*var(--size-ratio))]">
+                    <p className="whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]">
+                      Ты уверен в выборе героев?{'\n'}После нажатия этой кнопки{'\n'}ты не сможешь их поменять
+                    </p>
+                  </div>
+                  <Button className={'mt-[calc(20px*var(--size-ratio))]'} onClick={apply}>Да, уверен</Button>
+                  <Button className={'mt-[calc(20px*var(--size-ratio))]'} secondary onClick={() => setConfirmOpened(false)}>Нет, хочу поменять</Button>
+                </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </motion.div>

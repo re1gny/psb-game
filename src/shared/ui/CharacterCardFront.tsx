@@ -23,18 +23,18 @@ export const CharacterCardFront = (props: Props) => {
     <div 
       style={{
         ...style,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `calc(${width}px*var(--size-ratio))`,
+        height: `calc(${height}px*var(--size-ratio))`,
         '--scale': scale,
       } as CSSProperties}
       className={`relative ${className ?? ''}`}
       {...rest}
     >
       <div
-        className={`rounded-[8.79px] border-[1.19px] bg-cover pt-[17.58px] pb-[23px] pl-[20px] pr-[20px] overflow-hidden`}
+        className={`rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.19px*var(--size-ratio))] bg-cover pt-[calc(17.58px*var(--size-ratio))] pb-[calc(23px*var(--size-ratio))] pl-[calc(20px*var(--size-ratio))] pr-[calc(20px*var(--size-ratio))] overflow-hidden`}
         style={{
-          width: `${TARGET_WIDTH}px`,
-          height: `${TARGET_HEIGHT}px`,
+          width: `calc(${TARGET_WIDTH}px*var(--size-ratio))`,
+          height: `calc(${TARGET_HEIGHT}px*var(--size-ratio))`,
           transform: `scale(${scale})`,
           backgroundImage: `url(${character.baseBg})`,
           transformOrigin: 'top left',
@@ -42,21 +42,21 @@ export const CharacterCardFront = (props: Props) => {
         }}
       >
         <div 
-          className="relative w-full h-full rounded-[8.79px] border-[1.76px] bg-[#FFFFFF] pt-[49.82px] overflow-hidden"
+          className="relative w-full h-full rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#FFFFFF] pt-[calc(49.82px*var(--size-ratio))] overflow-hidden"
           style={{
             backgroundImage: `url(${character.subBg})`,
-            backgroundPositionY: '34px',
+            backgroundPositionY: 'calc(34px*var(--size-ratio))',
             backgroundSize: '100%',
             borderColor: character.borderColor,
           }}
         >
-          <div className="flex items-center justify-center absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[49.82px] rounded-[8.79px] border-[1.76px] bg-[#FFFFFF] px-[14px]" style={{borderColor: character.borderColor}}>
-            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
+          <div className="flex items-center justify-center absolute top-[calc(-1px*var(--size-ratio))] left-[calc(-1px*var(--size-ratio))] w-[calc(100%+(2px*var(--size-ratio)))] h-[calc(49.82px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#FFFFFF] px-[calc(14px*var(--size-ratio))]" style={{borderColor: character.borderColor}}>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[calc(18px*var(--size-ratio))] leading-[100%] text-[#000000] text-center">{character.name}</h3>
           </div>
           <div className="flex items-center justify-center w-full h-full">
             <img style={{
-              width: `${character.imageWidth}px`,
-              height: `${character.imageHeight}px`,
+              width: `calc(${character.imageWidth}px*var(--size-ratio))`,
+              height: `calc(${character.imageHeight}px*var(--size-ratio))`,
             }} src={character.image} alt="" />
           </div>
         </div>
@@ -67,7 +67,7 @@ export const CharacterCardFront = (props: Props) => {
               animate={{ opacity: 0.8 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className={'absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[calc(100%+2px)]'}
+              className={'absolute top-[calc(-1px*var(--size-ratio))] left-[calc(-1px*var(--size-ratio))] w-[calc(100%+(2px*var(--size-ratio)))] h-[calc(100%+(2px*var(--size-ratio))]'}
               src={unusedOverlay}
               alt=""
             />

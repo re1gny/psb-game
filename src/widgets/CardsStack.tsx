@@ -202,7 +202,7 @@ export const CardsStack = (props: Props) => {
 
   return (
     <motion.div
-      className={`flex justify-center absolute w-full ${applied ? 'h-[232px]' : 'h-[188px]'} ${className ?? ''}`}
+      className={`flex justify-center absolute w-full ${applied ? 'h-[calc(232px*var(--size-ratio))]' : 'h-[calc(188px*var(--size-ratio))]'} ${className ?? ''}`}
       {...rest}
     >
       {cards.map((character, index) => (
@@ -210,7 +210,7 @@ export const CardsStack = (props: Props) => {
           key={index}
           className={`absolute origin-center transition-transform duration-200 ${disabled ? 'pointer-events-none' : 'cursor-pointer'}`}
           style={{
-            transform: `translate(calc(${getPositions(index).x}px + ${(getPositions(index).k * 100)}%), ${getPositions(index).y}px) rotate(${getPositions(index).rotate}deg)`,
+            transform: `translate(calc((${getPositions(index).x}px*var(--size-ratio)) + ${(getPositions(index).k * 100)}%), calc(${getPositions(index).y}px*var(--size-ratio))) rotate(${getPositions(index).rotate}deg)`,
             zIndex: getPositions(index).z,
           }}
         >

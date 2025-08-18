@@ -26,8 +26,8 @@ export const CharacterCardBack = (props: Props) => {
     <div 
       style={{
         ...style,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `calc(${width}px*var(--size-ratio))`,
+        height: `calc(${height}px*var(--size-ratio))`,
         '--scale': scale,
       } as CSSProperties}
       className={`relative ${className ?? ''}`}
@@ -39,15 +39,15 @@ export const CharacterCardBack = (props: Props) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }} 
-            className="absolute top-0 left-0 w-full h-full rounded-[8.79px] bg-[#2C2D84CF] z-20"
+            className="absolute top-0 left-0 w-full h-full rounded-[calc(8.79px*var(--size-ratio))] bg-[#2C2D84CF] z-20"
           />
         )}
       </AnimatePresence>
       {withCheck && (
         <button 
-          className={`absolute top-[17px] left-[18px] z-20 w-[52px] h-[52px] flex items-center justify-center rounded-[10px] border-[2px] border-[#000000] cursor-pointer ${disabled ? 'bg-[#f0885b] pointer-events-none' : 'bg-[#EA5616]'}`} 
+          className={`absolute top-[calc(17px*var(--size-ratio))] left-[calc(18px*var(--size-ratio))] z-20 w-[calc(52px*var(--size-ratio))] h-[calc(52px*var(--size-ratio))] flex items-center justify-center rounded-[calc(10px*var(--size-ratio))] border-[calc(2px*var(--size-ratio))] border-[#000000] cursor-pointer ${disabled ? 'bg-[#f0885b] pointer-events-none' : 'bg-[#EA5616]'}`}
           style={{
-            boxShadow: highlightCheck ? '0px 0px 8.5px 0px #FFFFFF' : 'none',
+            boxShadow: highlightCheck ? 'calc(0px*var(--size-ratio)) calc(0px*var(--size-ratio)) calc(8.5px*var(--size-ratio)) calc(0px*var(--size-ratio)) #FFFFFF' : 'none',
             transition: 'box-shadow 0.2s ease-in-out',
           }}
           disabled={disabled}
@@ -60,8 +60,7 @@ export const CharacterCardBack = (props: Props) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }} 
                 transition={{ duration: 0.1, ease: 'easeInOut' }}
-                width="35" 
-                height="26" 
+                className='w-[calc(35px*var(--size-ratio))] h-[calc(26px*var(--size-ratio))]'
                 viewBox="0 0 35 26" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,10 +72,10 @@ export const CharacterCardBack = (props: Props) => {
         </button>
       )}
       <div
-        className={`relative flex flex-col rounded-[8.79px] border-[1.19px] bg-cover pt-[17px] pb-[16px] pl-[18px] pr-[18px]`}
+        className={`relative flex flex-col rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.19px*var(--size-ratio))] bg-cover pt-[calc(17px*var(--size-ratio))] pb-[calc(16px*var(--size-ratio))] pl-[calc(18px*var(--size-ratio))] pr-[calc(18px*var(--size-ratio))]`}
         style={{
-          width: `${TARGET_WIDTH}px`,
-          height: `${TARGET_HEIGHT}px`,
+          width: `calc(${TARGET_WIDTH}px*var(--size-ratio))`,
+          height: `calc(${TARGET_HEIGHT}px*var(--size-ratio))`,
           transform: `scale(${scale})`,
           backgroundImage: `url(${character.baseBg})`,
           transformOrigin: 'top left',
@@ -84,27 +83,27 @@ export const CharacterCardBack = (props: Props) => {
         }}
       >
         <div 
-          className="shrink-0 relative w-full h-[208.82px] rounded-[8.79px] border-[1.76px] bg-[#FFFFFF]"
+          className="shrink-0 relative w-full h-[calc(208.82px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#FFFFFF]"
           style={{
             backgroundImage: `url(${character.backSubBg})`,
-            backgroundPositionY: '34px',
+            backgroundPositionY: 'calc(34px*var(--size-ratio))',
             backgroundSize: '100%',
             borderColor: character.borderColor,
           }}
         >
           <div
-            className={`flex items-center justify-center absolute z-10 top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[49.82px] rounded-[8.79px] border-[1.76px] bg-[#FFFFFF] pr-[14px] ${withCheck ? 'pl-[50px]' : 'pl-[14px]'}`}
+            className={`flex items-center justify-center absolute z-10 top-[calc(-1px*var(--size-ratio))] left-[calc(-1px*var(--size-ratio))] w-[calc(100%+(2px*var(--size-ratio)))] h-[calc(49.82px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#FFFFFF] pr-[calc(14px*var(--size-ratio))] ${withCheck ? 'pl-[calc(50px*var(--size-ratio))]' : 'pl-[calc(14px*var(--size-ratio))]'}`}
             style={{ borderColor: character.borderColor }}
           >
-            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[calc(18px*var(--size-ratio))] leading-[100%] text-[#000000] text-center">{character.name}</h3>
           </div>
           <div className="relative flex items-start justify-center w-full h-full overflow-hidden">
             <img
               className={'absolute'}
               style={{
-                top: `${character.backImageY}px`,
-                width: `${character.backImageWidth}px`,
-                height: `${character.backImageHeight}px`,
+                top: `calc(${character.backImageY}px*var(--size-ratio))`,
+                width: `calc(${character.backImageWidth}px*var(--size-ratio))`,
+                height: `calc(${character.backImageHeight}px*var(--size-ratio))`,
               }}
               src={character.image}
               alt=""
@@ -112,22 +111,22 @@ export const CharacterCardBack = (props: Props) => {
           </div>
         </div>
         <div
-          className={`mt-[14px] flex flex-col relative w-full flex-grow rounded-[8.79px] border-[1.76px] py-[8px] pr-[6px] bg-[#FFFFFF] overflow-auto`}
+          className={`mt-[calc(14px*var(--size-ratio))] flex flex-col relative w-full flex-grow rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] py-[calc(8px*var(--size-ratio))] pr-[calc(6px*var(--size-ratio))] bg-[#FFFFFF] overflow-auto`}
           style={{ borderColor: character.borderColor }}
         >
           <div className='flex items-center'>
-            <div className={'shrink-0 flex items-center justify-center w-[32px]'}>
+            <div className={'shrink-0 flex items-center justify-center w-[calc(32px*var(--size-ratio))]'}>
               {character.backSign}
             </div>
-            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[14px] leading-[140%] text-[#000000]'>
+            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[calc(14px*var(--size-ratio))] leading-[140%] text-[#000000]'>
               Сильные стороны
             </h4>
           </div>
           <ul className='mt-1' style={{ color: character.borderColor }}>
             {character.pros.map((item, index) => (
-              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[14px] leading-[100%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
-                <div className='shrink-0 flex items-center justify-center w-[32px] h-[14px]'>
-                  <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[calc(14px*var(--size-ratio))] leading-[100%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
+                <div className='shrink-0 flex items-center justify-center w-[calc(32px*var(--size-ratio))] h-[calc(14px*var(--size-ratio))]'>
+                  <svg className='w-[calc(4px*var(--size-ratio))] h-[calc(4px*var(--size-ratio))]' viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill={character.borderColor} />
                   </svg>
                 </div>
@@ -136,18 +135,18 @@ export const CharacterCardBack = (props: Props) => {
             ))}
           </ul>
           <div className='mt-1 flex items-center'>
-            <div className={'shrink-0 flex items-center justify-center w-[32px]'}>
+            <div className={'shrink-0 flex items-center justify-center w-[calc(32px*var(--size-ratio))]'}>
               {character.backSign}
             </div>
-            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[14px] leading-[140%] text-[#000000]'>
+            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[calc(14px*var(--size-ratio))] leading-[140%] text-[#000000]'>
               Слабости
             </h4>
           </div>
           <ul className='mt-1' style={{ color: character.borderColor }}>
             {character.cons.map((item, index) => (
-              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[14px] leading-[115%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
-                <div className='shrink-0 flex items-center justify-center w-[32px] h-[14px]'>
-                  <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[calc(14px*var(--size-ratio))] leading-[115%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
+                <div className='shrink-0 flex items-center justify-center w-[calc(32px*var(--size-ratio))] h-[calc(14px*var(--size-ratio))]'>
+                  <svg className='w-[calc(4px*var(--size-ratio))] h-[calc(4px*var(--size-ratio))]' viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill={character.borderColor} />
                   </svg>
                 </div>
