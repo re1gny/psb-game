@@ -51,7 +51,7 @@ export const CharacterCardFront = (props: Props) => {
           }}
         >
           <div className="flex items-center justify-center absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[49.82px] rounded-[8.79px] border-[1.76px] bg-[#FFFFFF] px-[14px]" style={{borderColor: character.borderColor}}>
-            <h3 className="font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
           </div>
           <div className="flex items-center justify-center w-full h-full">
             <img style={{

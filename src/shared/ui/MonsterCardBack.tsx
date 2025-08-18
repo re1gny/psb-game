@@ -38,7 +38,7 @@ export const MonsterCardBack = (props: Props) => {
         }}
       >
         <div 
-          className="relative w-full h-[208.82px] rounded-[8.79px] border-[1.76px] border-[#FFFFFF] bg-[#000000] pt-[49.82px] overflow-hidden"
+          className="relative w-full h-[208.82px] rounded-[8.79px] border-[1.76px] border-[#FFFFFF] bg-[#000000] pt-[49.82px] overflow-auto"
           style={{
             backgroundImage: `url(${monster.backSubBg})`,
             backgroundPositionY: '49.82px',
@@ -46,7 +46,7 @@ export const MonsterCardBack = (props: Props) => {
           }}
         >
           <div className="flex items-center justify-center absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[49.82px] rounded-[8.79px] border-[1.76px] bg-[#000000] px-[14px]">
-            <h3 className="font-gilroy font-extrabold text-[18px] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
           </div>
           <div className="flex items-start justify-center w-full h-full">
             <img style={{
@@ -61,7 +61,7 @@ export const MonsterCardBack = (props: Props) => {
           <svg className="absolute top-[12px] left-[11px]" width="5" height="17" viewBox="0 0 5 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.81932 10.2327L0.137135 4.54784V-6.10352e-05H4.23024V4.54784L3.54806 10.2327H0.81932ZM2.18369 16.2359C1.00124 16.2359 0.0234375 15.2581 0.0234375 14.0757C0.0234375 12.8932 1.00124 11.9154 2.18369 11.9154C3.36614 11.9154 4.34394 12.8932 4.34394 14.0757C4.34394 15.2581 3.36614 16.2359 2.18369 16.2359Z" fill="black"/>
           </svg>
-          <p className="font-gilroy font-light text-[14px] leading-[115%] text-[#000000]">{monster.details}</p>
+          <p className="whitespace-pre-line font-gilroy font-light text-[14px] leading-[115%] text-[#000000]">{monster.details}</p>
         </div>
       </div>
     </div>

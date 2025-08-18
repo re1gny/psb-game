@@ -96,9 +96,9 @@ export const Path = (props: Props) => {
                 <path d="M118.808 208.534C118.55 209.023 118.738 209.628 119.227 209.885C119.716 210.142 120.32 209.954 120.578 209.466L118.808 208.534ZM0.46718 5.15377C-0.000178814 5.44804 -0.140497 6.06546 0.153771 6.53282L4.94915 14.1489C5.24341 14.6162 5.86084 14.7566 6.3282 14.4623C6.79555 14.168 6.93587 13.5506 6.6416 13.0832L2.37905 6.31341L9.14888 2.05085C9.61624 1.75659 9.75656 1.13916 9.46229 0.671805C9.16802 0.204446 8.5506 0.0641274 8.08324 0.358396L0.46718 5.15377ZM119.693 209L120.578 209.466C126.99 197.28 129.843 180.025 128.784 160.663C127.725 141.284 122.744 119.711 113.399 98.8367C94.7057 57.0812 58.5103 18.0446 1.22161 5.02487L1 6L0.778386 6.97513C57.3328 19.828 93.0819 58.3488 111.573 99.6539C120.821 120.309 125.742 141.643 126.787 160.773C127.834 179.92 124.994 196.778 118.808 208.534L119.693 209Z" fill="white"/>
               </motion.svg>
               <motion.div className={'flex flex-col items-center w-full'} exit={{ opacity: 0, scale: 0.8 }}>
-                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-full z-10'}>
-                  <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
-                    Здесь ты можешь всегда вспомнить правила игры
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] px-[40px] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                    Здесь ты всегда сможешь{'\n'}вспомнить правила игры
                   </p>
                 </motion.div>
                 <Button className={'mt-[20px]'} onClick={next}>
@@ -119,9 +119,9 @@ export const Path = (props: Props) => {
                 <path d="M121.404 137.833C121.312 138.377 121.679 138.894 122.223 138.986C122.768 139.078 123.284 138.712 123.376 138.167L121.404 137.833ZM0.382342 6.21355C-0.0520004 6.55468 -0.12757 7.18331 0.213553 7.61766L5.77247 14.6957C6.11359 15.13 6.74223 15.2056 7.17658 14.8645C7.61092 14.5233 7.68649 13.8947 7.34537 13.4604L2.4041 7.16879L8.69568 2.22753C9.13002 1.88641 9.20559 1.25777 8.86447 0.823423C8.52335 0.389081 7.89471 0.313511 7.46037 0.654634L0.382342 6.21355ZM122.39 138L123.376 138.167C128.39 108.588 121.927 78.4165 102.104 54.19C82.2824 29.9649 49.1875 11.7855 1.11935 6.00715L1 7L0.880648 7.99285C48.5643 13.725 81.1353 31.7213 100.556 55.4565C119.976 79.1902 126.332 108.763 121.404 137.833L122.39 138Z" fill="white"/>
               </motion.svg>
               <motion.div className={'flex flex-col items-center w-full'} exit={{ opacity: 0, scale: 0.8 }}>
-                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] py-[20px] px-[34px] w-full z-10'}>
-                  <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
-                    Это альбом, где хранится твоя коллекция игровых карт с героями
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] py-[20px] px-[40px] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                    Это альбом, где хранится{'\n'}твоя коллекция игровых карт{'\n'}с героями
                   </p>
                 </motion.div>
                 <Button className={'mt-[20px]'} onClick={next}>
@@ -142,9 +142,9 @@ export const Path = (props: Props) => {
                 <path d="M119.016 64.6788C119.115 65.2222 119.636 65.5826 120.179 65.4838C120.722 65.385 121.083 64.8644 120.984 64.321L119.016 64.6788ZM0.208495 8.38875C-0.129041 8.82588 -0.0482986 9.45388 0.388838 9.79142L7.51239 15.2919C7.94952 15.6294 8.57752 15.5487 8.91505 15.1115C9.25259 14.6744 9.17185 14.0464 8.73471 13.7089L2.40267 8.81957L7.29197 2.48753C7.6295 2.05039 7.54876 1.42239 7.11162 1.08486C6.67449 0.747322 6.04649 0.828064 5.70896 1.2652L0.208495 8.38875ZM120 64.4999L120.984 64.321C116.432 39.2878 103.995 22.8616 83.7803 13.8983C63.653 4.9739 35.9314 3.5005 0.872478 8.00807L1 8.99991L1.12752 9.99175C36.0686 5.49933 63.347 7.02596 82.9697 15.7266C102.505 24.3883 114.568 40.2121 119.016 64.6788L120 64.4999Z" fill="white"/>
               </motion.svg>
               <motion.div className={'flex flex-col items-center w-full'} exit={{ opacity: 0, scale: 0.8 }}>
-                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-full z-10'}>
-                  <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
-                    Эта книжка – место рефлексии над побежденными монстрами и твоими успехами
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] px-[40px] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                    Эта книжка — место рефлексии над побеждёнными монстрами{'\n'}и твоими успехами
                   </p>
                 </motion.div>
                 <Button className={'mt-[20px]'} onClick={next}>

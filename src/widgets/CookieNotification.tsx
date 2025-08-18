@@ -16,13 +16,13 @@ export const CookieNotification = (props: Props) => {
           className={`flex items-center gap-[20px] rounded-[7.41px] border-[#000000] border-[1.48px] bg-[#282976] pl-[20px] pt-[8px] pr-[8px] pb-[8px] ${className ?? ''}`}
           {...rest}
         >
-          <h3 className={'font-gilroy text-[#FFFFFF] text-[13px] leading-[100%] tracking-[0.01em] font-light'}>
+          <h3 className={'whitespace-pre-line font-gilroy text-[#FFFFFF] text-[13px] leading-[100%] tracking-[0.01em] font-light'}>
             <a href="https://fut.ru/cookie" target={'_blank'}>
               Мы используем куки.
-            </a> Играя, ты соглашаешься с этим
+            </a>{' '}Играя, ты соглашаешься с этим
           </h3>
           <button
-            className={'font-gilroy shrink-0 w-[112px] h-[50px] rounded-[10px] border-[1px] border-[#411400] bg-[#EA5616] font-extrabold text-[20px] leading-[100%] tracking-normal text-[#FFFFFF]'}
+            className={'whitespace-pre-line font-gilroy shrink-0 w-[112px] h-[50px] rounded-[10px] border-[1px] border-[#411400] bg-[#EA5616] font-extrabold text-[20px] leading-[100%] tracking-normal text-[#FFFFFF]'}
             onClick={() => setAcceptCookie(true)}
           >
             окей

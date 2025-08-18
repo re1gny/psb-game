@@ -155,10 +155,10 @@ export const CardsSelector = (props: Props) => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="absolute top-0 left-0 w-full h-full p-[10px] flex items-center justify-center"
+                        className="absolute top-0 left-0 w-full h-full py-[10px] px-[20px] flex items-center justify-center"
                       >
-                        <p className="font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-center text-[#000000]">
-                          {step === 1 || step === 2 ? 'Чтобы выбрать героя для сражения, отмечай его галочкой' : 'Если захочешь поменять героя, нажми на галочку еще раз'}
+                        <p className="whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-center text-[#000000]">
+                          {step === 1 || step === 2 ? 'Чтобы выбрать героя\nдля сражения, отмечай\nего галочкой' : 'Если захочешь поменять\nгероя, нажми на галочку\nеще раз'}
                         </p>
                       </motion.div>
                     </AnimatePresence>
@@ -272,8 +272,8 @@ export const CardsSelector = (props: Props) => {
                 className={`absolute top-[185px] left-[20px] w-[calc(100%-40px)] flex flex-col items-center z-30`}
               >
                 <div className="w-full bg-[#FFFFFF] rounded-[7.41px] border-[1.48px] border-[#000000] p-[20px]">
-                  <p className="font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]">
-                    Ты уверен в в выборе героев? После нажатия этой кнопки ты не сможешь их поменять
+                  <p className="whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]">
+                    Ты уверен в выборе героев?{'\n'}После нажатия этой кнопки{'\n'}ты не сможешь их поменять
                   </p>
                 </div>
                 <Button className={'mt-[20px]'} onClick={apply}>Да, уверен</Button>

@@ -17,6 +17,7 @@ import {CookieNotification} from "~/widgets/CookieNotification";
 import {Button} from "~/shared/ui/Button";
 import {preloadAllImages} from "~/shared/lib/preloadImages";
 import {useEffect, useState} from "react";
+import {useProgressStore} from "~/store/progressStore.ts";
 
 export const Route = createFileRoute('/start')({
   component: Component,
@@ -64,13 +65,14 @@ const MONSTER_VARIANTS: Variants = {
 function Component() {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
+  const shouldShowStartRules = useProgressStore(state => state.shouldShowStartRules);
 
   useEffect(() => {
     preloadAllImages().then(() => setLoaded(true));
   }, []);
 
   const next = () => {
-    router.navigate({ to: '/rules' })
+    router.navigate({ to: shouldShowStartRules ? '/rules' : '/path' })
   }
 
   return (
@@ -186,13 +188,9 @@ function Component() {
         className={'flex flex-col items-center absolute top-[112px] left-[20px] w-[calc(100%-40px)]'}
       >
         <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[16px] pb-[24px] pl-[22px] w-full z-10'}>
-          <h3 className={'font-gilroy font-extrabold text-[20px] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведет к победе!</h3>
-          <p className={'mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-            Каждый день мы сталкиваемся с различными трудностями и задачами: распечатать постеры, спланировать вечеринку, презентовать результаты работы перед клиентом.
-            Какие-то задачи даются легче зумерам, а с другими быстро справляются миллениалы. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}> синергии наших сильных сторон</span> для достижения общего результата.
-          </p>
-          <p className={'mt-3 font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-            Готов испытать свои силы и доказать, что <span className={'font-extrabold text-[#EA5616]'}>объединение навыков поможет справиться с любой задачей?</span>
+          <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[20px] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведет к победе!</h3>
+          <p className={'whitespace-pre-line mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+            Каждый день мы сталкиваемся{'\n'}с различными вызовами: распечатать постеры, спланировать вечеринку, презентовать результаты работы клиенту. Одни задачи даются легче{' '}<span className={'font-extrabold text-[#EA5616]'}>зумерам</span>, другие —{' '}<span className={'font-extrabold text-[#EA5616]'}>миллениалам</span>. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}>синергии наших сильных сторон</span> для достижения общего результата. Готов испытать свои силы и доказать, что объединение навыков поможет справиться с любой трудностью?
           </p>
         </motion.div>
         <AnimatePresence>

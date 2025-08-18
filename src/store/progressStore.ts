@@ -9,9 +9,13 @@ type Store = {
   passedLevels: number[];
   availableCharacters: number[];
   usedCharacters: number[];
+  shouldShowStartRules: boolean;
+  shouldShowCardsRules: boolean;
   passLevel: (level: number, cards: Character[], newCards: Character[]) => void;
   looseLevel: (level: number) => void;
   restart: () => void;
+  applyCardsRules: () => void;
+  applyStartRules: () => void;
 };
 
 export const useProgressStore = create<Store>((set, get) => ({
@@ -19,6 +23,8 @@ export const useProgressStore = create<Store>((set, get) => ({
   passedLevels: [],
   availableCharacters: INITIAL_AVAILABLE_CHARACTERS,
   usedCharacters: [],
+  shouldShowStartRules: true,
+  shouldShowCardsRules: true,
   passLevel: (level: number, winCards: Character[], newCards: Character[]) => {
     set(prev => ({
       passedLevels: [...prev.passedLevels, level],
@@ -40,5 +46,11 @@ export const useProgressStore = create<Store>((set, get) => ({
       availableCharacters: INITIAL_AVAILABLE_CHARACTERS,
       usedCharacters: [],
     })
+  },
+  applyCardsRules: () => {
+    set({ shouldShowCardsRules: false })
+  },
+  applyStartRules: () => {
+    set({ shouldShowStartRules: false })
   },
 }));

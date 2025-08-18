@@ -46,7 +46,7 @@ export const MonsterCardFront = (props: Props) => {
           }}
         >
           <div className="flex items-center justify-center absolute top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[100.72px] rounded-[8.79px] border-[1.76px] bg-[#000000] px-[14px]">
-            <h3 className="font-gilroy font-extrabold text-[18px] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#FFFFFF] text-center">{monster.name}</h3>
           </div>
           <div className="flex items-center justify-center w-full h-full">
             <img style={{

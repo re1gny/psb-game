@@ -36,6 +36,8 @@ export function LevelGame({ level, onReset }: Props) {
   const usedCharacters = useProgressStore(state => state.usedCharacters);
   const passLevel = useProgressStore(state => state.passLevel);
   const looseLevel = useProgressStore(state => state.looseLevel);
+  const shouldShowCardsRules = useProgressStore(state => state.shouldShowCardsRules);
+  const applyCardsRules = useProgressStore(state => state.applyCardsRules);
 
   const availableCharacters = ALL_CHARACTERS.filter(character =>
     availableCharacterIds.includes(character.id) && !usedCharacters.includes(character.id)
@@ -64,6 +66,7 @@ export function LevelGame({ level, onReset }: Props) {
     setSelectedCards(selectedCharacters);
     setCardsSelectorOpened(false);
     setIsApplied(true);
+    applyCardsRules();
     next();
   }
 
@@ -100,7 +103,7 @@ export function LevelGame({ level, onReset }: Props) {
         setTimeout(() => next(), 600);
       } else if (winnable === false) {
         looseLevel(1);
-        setTimeout(() => next(), 1200);
+        setTimeout(() => next(), 3000);
       }
     }
   }, [winnable, step, clicks])
@@ -296,7 +299,7 @@ export function LevelGame({ level, onReset }: Props) {
                 <path d="M80.6709 1V0H80.6709L80.6709 1ZM112.312 25.4355L111.344 25.6874L111.656 26.8863L112.762 26.3284L112.312 25.4355ZM127.014 21.9492V20.9492H127.014L127.014 21.9492ZM159.708 54.6436L160.708 54.6436V54.6436H159.708ZM127.014 87.3369L127.014 88.3369H127.014V87.3369ZM124.333 87.2266L124.414 86.2299L123.019 86.1165L123.364 87.473L124.333 87.2266ZM131.141 114L130.6 114.841L132.735 116.212L132.11 113.754L131.141 114ZM105.823 97.7432L106.364 96.9017L105.619 96.4238L105.054 97.1041L105.823 97.7432ZM80.6709 109.557L80.6709 110.557H80.6709V109.557ZM52.2324 93L53.1017 92.5057L52.5625 91.5575L51.6647 92.1768L52.2324 93ZM33.6934 98.7637L33.6933 99.7637H33.6934V98.7637ZM1 66.0703H0H1ZM25.1895 34.4951L25.4489 35.4609L26.2621 35.2424L26.1853 34.4039L25.1895 34.4951ZM25.123 33.0586L24.123 33.0586V33.0586H25.123ZM40.6768 17.5059V16.5059H40.6767L40.6768 17.5059ZM50.5244 21.0205L49.8908 21.7942L50.9267 22.6425L51.4461 21.4084L50.5244 21.0205ZM80.6709 1V2C95.4077 2 107.797 12.0593 111.344 25.6874L112.312 25.4355L113.279 25.1837C109.509 10.6962 96.3407 0 80.6709 0V1ZM112.312 25.4355L112.762 26.3284C117.045 24.168 121.886 22.9493 127.014 22.9492L127.014 21.9492L127.014 20.9492C121.565 20.9493 116.417 22.2448 111.861 24.5427L112.312 25.4355ZM127.014 21.9492V22.9492C144.518 22.9492 158.708 37.1395 158.708 54.6436H159.708H160.708C160.708 36.035 145.622 20.9492 127.014 20.9492V21.9492ZM159.708 54.6436L158.708 54.6435C158.708 72.1474 144.518 86.3369 127.014 86.3369V87.3369V88.3369C145.622 88.3369 160.708 73.252 160.708 54.6436L159.708 54.6436ZM127.014 87.3369L127.014 86.3369C126.139 86.3369 125.273 86.2996 124.414 86.2299L124.333 87.2266L124.252 88.2233C125.162 88.2972 126.083 88.3369 127.014 88.3369L127.014 87.3369ZM124.333 87.2266L123.364 87.473L130.171 114.246L131.141 114L132.11 113.754L125.302 86.9801L124.333 87.2266ZM131.141 114L131.681 113.159L106.364 96.9017L105.823 97.7432L105.283 98.5846L130.6 114.841L131.141 114ZM105.823 97.7432L105.054 97.1041C99.2394 104.102 90.477 108.557 80.6709 108.557V109.557V110.557C91.0971 110.557 100.414 105.817 106.592 98.3823L105.823 97.7432ZM80.6709 109.557L80.6709 108.557C68.8579 108.556 58.5538 102.093 53.1017 92.5057L52.2324 93L51.3631 93.4943C57.1561 103.681 68.1096 110.556 80.6709 110.557L80.6709 109.557ZM52.2324 93L51.6647 92.1768C46.5575 95.6993 40.3682 97.7637 33.6934 97.7637V98.7637V99.7637C40.7871 99.7637 47.3702 97.5683 52.8002 93.8232L52.2324 93ZM33.6934 98.7637L33.6934 97.7637C16.1896 97.7634 2.00005 83.5741 2 66.0703H1H0C4.88758e-05 84.6787 15.085 99.7634 33.6933 99.7637L33.6934 98.7637ZM1 66.0703H2C2 51.4197 11.942 39.0898 25.4489 35.4609L25.1895 34.4951L24.93 33.5294C10.5716 37.3871 0 50.4921 0 66.0703H1ZM25.1895 34.4951L26.1853 34.4039C26.1446 33.9599 26.123 33.511 26.123 33.0586H25.123H24.123C24.123 33.5746 24.1477 34.0845 24.1936 34.5863L25.1895 34.4951ZM25.123 33.0586L26.123 33.0586C26.1232 25.0213 32.6393 18.506 40.6768 18.5059L40.6768 17.5059L40.6767 16.5059C31.5349 16.506 24.1233 23.9166 24.123 33.0586L25.123 33.0586ZM40.6768 17.5059V18.5059C44.1742 18.5059 47.381 19.7387 49.8908 21.7942L50.5244 21.0205L51.158 20.2468C48.3041 17.9096 44.6531 16.5059 40.6768 16.5059V17.5059ZM50.5244 21.0205L51.4461 21.4084C56.2461 10.0041 67.5251 2.00019 80.6709 2L80.6709 1L80.6709 0C66.6923 0.00020653 54.7039 8.51261 49.6027 20.6326L50.5244 21.0205Z" fill="black"/>
               </svg>
               <p
-                className={'absolute font-inter font-semibold text-[12px] leading-[100%] text-center lowercase text-[#00029D]'}
+                className={'absolute font-inter font-semibold text-[12px] leading-[100%] text-center text-[#00029D]'}
                 style={{
                   padding: level.looseMonsterText.padding.map(item => `${item}px`).join(' ')
                 }}
@@ -338,8 +341,8 @@ export function LevelGame({ level, onReset }: Props) {
               className={'absolute top-0 left-0 w-full h-full'}
             >
               <div className={'absolute top-1/2 -translate-y-1/2 left-[20px] w-[calc(100%-40px)] flex flex-col items-center'}>
-                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[22px] pb-[22px] pl-[22px] w-full z-10'}>
-                  <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[18px] pb-[22px] pl-[21px] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                     {level.introText}
                   </p>
                 </motion.div>
@@ -377,9 +380,9 @@ export function LevelGame({ level, onReset }: Props) {
               exit={{ opacity: 0, scale: 0.8 }}
               className={'flex flex-col items-center absolute top-[208px] left-[20px] w-[calc(100%-40px)]'}
             >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-full z-10'}>
-                <h3 className={'font-gilroy font-extrabold text-[20px] leading-[100%] text-[#EA5616] text-center'}>Подсказка</h3>
-                <p className={'mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] pr-[18px] w-full z-10'}>
+                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[20px] leading-[100%] text-[#EA5616] text-center'}>Подсказка</h3>
+                <p className={'whitespace-pre-line mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                   {level.hintText}
                 </p>
               </motion.div>
@@ -395,12 +398,12 @@ export function LevelGame({ level, onReset }: Props) {
               className={`flex flex-col items-center absolute top-[259px] w-full transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : ''}`}
             >
               <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] p-[20px] w-[265px] z-10'}>
-                <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
-                  Выбери 2 карты с персонажами, которые помогут победить монстра и устроить праздник
+                <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                  {level.chooseCardsText}
                 </p>
               </motion.div>
-              <svg className={'absolute bottom-[-3px] translate-y-full pointer-events-none'} width="16" height="83" viewBox="0 0 16 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.49998 1.00617C9.50339 0.453898 9.05845 0.00342817 8.50617 1.90735e-05C7.9539 -0.00339003 7.50343 0.441553 7.50002 0.993827L8.5 1L9.49998 1.00617ZM7.28854 82.7027C7.67665 83.0957 8.3098 83.0996 8.70273 82.7115L15.1059 76.3869C15.4988 75.9988 15.5027 75.3656 15.1146 74.9727C14.7265 74.5798 14.0933 74.5759 13.7004 74.964L8.00873 80.5858L2.3869 74.8941C1.9988 74.5012 1.36564 74.4973 0.972715 74.8854C0.579787 75.2735 0.575879 75.9067 0.963985 76.2996L7.28854 82.7027ZM8.5 1L7.50002 0.993827L7.00002 81.9938L8 82L8.99998 82.0062L9.49998 1.00617L8.5 1Z" fill="white"/>
+              <svg className={'absolute bottom-[-3px] translate-y-full pointer-events-none'} width="16" height="69" viewBox="0 0 16 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 1C9 0.447715 8.55228 -2.1479e-10 8 0C7.44772 2.1479e-10 7 0.447715 7 1L8 1L9 1ZM7.29289 68.7071C7.68342 69.0976 8.31658 69.0976 8.70711 68.7071L15.0711 62.3431C15.4616 61.9526 15.4616 61.3195 15.0711 60.9289C14.6805 60.5384 14.0474 60.5384 13.6569 60.9289L8 66.5858L2.34315 60.9289C1.95262 60.5384 1.31946 60.5384 0.928932 60.9289C0.538408 61.3195 0.538408 61.9526 0.928932 62.3431L7.29289 68.7071ZM8 1L7 1L7 68L8 68L9 68L9 1L8 1Z" fill="white"/>
               </svg>
             </motion.div>
           )}
@@ -414,7 +417,7 @@ export function LevelGame({ level, onReset }: Props) {
               className={`flex flex-col items-center absolute top-[376px] w-full transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : ''}`}
             >
               <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] py-[21px] px-[30px] w-[265px] z-10'}>
-                <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
                   Нажимай на монстра, чтобы атаковать
                 </p>
               </motion.div>
@@ -432,11 +435,11 @@ export function LevelGame({ level, onReset }: Props) {
               exit={{ opacity: 0, scale: 0.8 }}
               className={'flex flex-col items-center absolute top-[177px] left-[20px] w-[calc(100%-40px)]'}
             >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[20px] pr-[18px] pb-[23px] pl-[21px] w-full z-10'}>
-                <h3 className={'font-gilroy font-extrabold text-[20px] leading-[108%] tracking-[0] text-[#EA5616] text-center'}>
+              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[20px] pr-[16px] pb-[23px] pl-[20px] w-full z-10'}>
+                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[20px] leading-[108%] tracking-[0] text-[#EA5616] text-center'}>
                   {level.winTitle}
                 </h3>
-                <p className={'mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                <p className={'whitespace-pre-line mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                   {level.winText}
                 </p>
               </motion.div>
@@ -455,10 +458,10 @@ export function LevelGame({ level, onReset }: Props) {
               className={'flex flex-col items-center absolute top-[177px] left-[20px] w-[calc(100%-40px)]'}
             >
               <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[20px] pr-[18px] pb-[23px] pl-[21px] w-full z-10'}>
-                <h3 className={'font-gilroy font-extrabold text-[20px] leading-[108%] tracking-[0] text-[#EA5616] text-center'}>
+                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[20px] leading-[108%] tracking-[0] text-[#EA5616] text-center'}>
                   {level.looseTitle}
                 </h3>
-                <p className={'mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                <p className={'whitespace-pre-line mt-[20px] font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                   {level.looseText}
                 </p>
               </motion.div>
@@ -469,8 +472,8 @@ export function LevelGame({ level, onReset }: Props) {
           )}
         </AnimatePresence>
         <CardsSelector
-          withRules={ALL_LEVELS[0].id === level.id && !isApplied}
-          opened={cardsSelectorOpened} 
+          withRules={shouldShowCardsRules}
+          opened={cardsSelectorOpened}
           applied={isApplied}
           onClose={() => setCardsSelectorOpened(false)} 
           onApply={applySelector} 

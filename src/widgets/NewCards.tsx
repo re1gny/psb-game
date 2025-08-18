@@ -101,7 +101,7 @@ export const NewCards = (props: Props) => {
               className={'flex flex-col items-center absolute top-[26px] left-[20px] w-[calc(100%-40px)]'}
             >
               <motion.div className={'relative flex items-center justify-center bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] w-full h-[62px] z-10'}>
-                <p className={'font-inter font-semibold text-[20px] leading-[105%] tracking-[0.01em] text-[#00029D]'}>
+                <p className={'whitespace-pre-line font-inter font-semibold text-[20px] leading-[105%] tracking-[0.01em] text-[#00029D]'}>
                   {cards.length === 2 ? 'Ты получил новые карты!' : 'Ты получил новую карту!'}
                 </p>
               </motion.div>

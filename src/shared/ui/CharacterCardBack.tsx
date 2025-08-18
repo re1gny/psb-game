@@ -1,4 +1,4 @@
-import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from "react";
+import {CSSProperties, DetailedHTMLProps, HTMLAttributes} from "react";
 import { getSizeRatio } from "../lib/getSizeRatio";
 import { Character } from "../constants/characters";
 import { AnimatePresence, motion } from "framer-motion";
@@ -96,7 +96,7 @@ export const CharacterCardBack = (props: Props) => {
             className={`flex items-center justify-center absolute z-10 top-[-1px] left-[-1px] w-[calc(100%+2px)] h-[49.82px] rounded-[8.79px] border-[1.76px] bg-[#FFFFFF] pr-[14px] ${withCheck ? 'pl-[50px]' : 'pl-[14px]'}`}
             style={{ borderColor: character.borderColor }}
           >
-            <h3 className="font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
+            <h3 className="whitespace-pre-line font-gilroy font-extrabold text-[18px] leading-[100%] text-[#000000] text-center">{character.name}</h3>
           </div>
           <div className="relative flex items-start justify-center w-full h-full overflow-hidden">
             <img
@@ -111,22 +111,22 @@ export const CharacterCardBack = (props: Props) => {
             />
           </div>
         </div>
-        <div 
-          className="mt-[14px] flex flex-col relative w-full flex-grow rounded-[8.79px] border-[1.76px] py-[8px] pr-[6px] bg-[#FFFFFF] overflow-hidden"
+        <div
+          className={`mt-[14px] flex flex-col relative w-full flex-grow rounded-[8.79px] border-[1.76px] py-[8px] pr-[6px] bg-[#FFFFFF] overflow-auto`}
           style={{ borderColor: character.borderColor }}
         >
           <div className='flex items-center'>
             <div className={'shrink-0 flex items-center justify-center w-[32px]'}>
               {character.backSign}
             </div>
-            <h4 className='font-gilroy font-extrabold text-[14px] leading-[100%] text-[#000000]'>
+            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[14px] leading-[140%] text-[#000000]'>
               Сильные стороны
             </h4>
           </div>
           <ul className='mt-1' style={{ color: character.borderColor }}>
             {character.pros.map((item, index) => (
-              <li key={index} className={`flex items-start font-gilroy font-light text-[14px] leading-[115%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
-                <div className='shrink-0 flex items-center justify-center w-[32px] h-4'>
+              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[14px] leading-[100%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
+                <div className='shrink-0 flex items-center justify-center w-[32px] h-[14px]'>
                   <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill={character.borderColor} />
                   </svg>
@@ -139,14 +139,14 @@ export const CharacterCardBack = (props: Props) => {
             <div className={'shrink-0 flex items-center justify-center w-[32px]'}>
               {character.backSign}
             </div>
-            <h4 className='font-gilroy font-extrabold text-[14px] leading-[100%] text-[#000000]'>
+            <h4 className='whitespace-pre-line font-gilroy font-extrabold text-[14px] leading-[140%] text-[#000000]'>
               Слабости
             </h4>
           </div>
           <ul className='mt-1' style={{ color: character.borderColor }}>
             {character.cons.map((item, index) => (
-              <li key={index} className={`flex items-start font-gilroy font-light text-[14px] leading-[115%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
-                <div className='shrink-0 flex items-center justify-center w-[32px] h-4'>
+              <li key={index} className={`whitespace-pre-line flex items-start font-gilroy font-light text-[14px] leading-[115%] text-[#000000] ${index === 0 ? '' : 'mt-1'}`}>
+                <div className='shrink-0 flex items-center justify-center w-[32px] h-[14px]'>
                   <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill={character.borderColor} />
                   </svg>

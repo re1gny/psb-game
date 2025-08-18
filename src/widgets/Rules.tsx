@@ -76,9 +76,9 @@ export const Rules = (props: Props) => {
             exit={{ opacity: 0, scale: 0.8 }}
             className={'flex flex-col items-center absolute top-[201px] left-[20px] w-[calc(100%-40px)]'}
           >
-            <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[22px] pb-[22px] pl-[22px] w-full z-10'}>
-              <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                Ты столкнешься с жизненными монстрами-задачами, но не пугайся! В арсенале у тебя будут крутые персонажи: каждый со своими сильными сторонами и слабостями, вместе они справятся с любой задачей. Твоя цель — правильно подобрать <span className={'font-extrabold text-[#EA5616]'}>комбинацию карт</span>, чтобы справиться со всеми челленджами
+            <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[20px] pb-[22px] pl-[20px] w-full z-10'}>
+              <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                Ты столкнёшься с жизненными монстрами-задачами, но не пугайся! В арсенале у тебя будут крутые персонажи: каждый со своими сильными сторонами.{' '}<span className={'font-extrabold text-[#EA5616]'}>Твоя цель — правильно подобрать комбинацию карт</span>, чтобы справиться со всеми челленджами
               </p>
             </motion.div>
             <Button className={'mt-[20px]'} onClick={next}>
@@ -96,8 +96,10 @@ export const Rules = (props: Props) => {
             className={'flex flex-col items-center absolute top-[155px] left-[20px] w-[calc(100%-40px)]'}
           >
             <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[21px] pr-[21px] pb-[23px] pl-[21px] w-full z-10'}>
-              <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                Чтобы понять, какие карты лучше всего справятся с монстрами, внимательно <span className={'font-extrabold text-[#EA5616]'}>читай описание</span> — в них указаны сильные и слабые стороны персонажей. Если ты выбрал правильную комбинацию, то монстр побежден. А если ошибся — придется начать уровень сначала. После каждой победы ты будешь получать нового героя, который пригодится в следующих сражениях
+              <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                Чтобы справиться с монстрами, внимательно читай описания карт — в них указаны сильные и слабые стороны персонажей.
+                <br/>
+                <span className={'font-extrabold text-[#EA5616]'}>Если ты выбрал правильную комбинацию, то монстр побеждён, если нет — придётся начать уровень сначала.</span>{' '}После каждой победы ты будешь получать нового героя, который пригодится в следующих сражениях
               </p>
             </motion.div>
             <svg className={'absolute bottom-[-1px] translate-y-full'} width="16" height="69" viewBox="0 0 16 69" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +120,7 @@ export const Rules = (props: Props) => {
               <path d="M6.90845 196C6.90845 196.552 7.35616 197 7.90845 197C8.46073 197 8.90845 196.552 8.90845 196H6.90845ZM8.61555 0.292568C8.22503 -0.097965 7.59186 -0.097965 7.20134 0.292568L0.83738 6.65652C0.446856 7.04705 0.446856 7.68022 0.83738 8.07074C1.2279 8.46125 1.86107 8.46125 2.25159 8.07074L7.90845 2.41388L13.5653 8.07074C13.9558 8.46125 14.589 8.46125 14.9795 8.07074C15.37 7.68022 15.37 7.04705 14.9795 6.65652L8.61555 0.292568ZM7.90845 196H8.90845L8.90845 0.999676H7.90845H6.90845L6.90845 196H7.90845Z" fill="white"/>
             </svg>
             <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[7.41px] pt-[20px] pr-[19px] pb-[19px] pl-[19px] w-full z-10'}>
-              <p className={'font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+              <p className={'whitespace-pre-line font-gilroy font-light text-[16px] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
                 У тебя будет всего <span className={'font-extrabold text-[#EA5616]'}>3 жизни</span>.
                 <br/>
                 Поэтому выбирай карты с умом!
