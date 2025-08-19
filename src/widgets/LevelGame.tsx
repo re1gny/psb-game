@@ -18,11 +18,12 @@ import {useStep} from "~/shared/lib/useStep";
 
 type Props = {
   level: Level;
+  hasReset: boolean;
   onReset: () => void;
 }
 
-export function LevelGame({ level, onReset }: Props) {
-  const [step, next] = useStep(`level-${level.id}`, 1);
+export function LevelGame({ level, hasReset, onReset }: Props) {
+  const [step, next] = useStep(`level-${level.id}`, hasReset ? 4 : 1);
   const navigate = useNavigate();
   const [rulesModalOpened, setRulesModalOpened] = useState(false);
   const [cardsSelectorOpened, setCardsSelectorOpened] = useState(false);
@@ -268,7 +269,7 @@ export function LevelGame({ level, onReset }: Props) {
                     alt=""
                   />
                   <p
-                    className={'absolute font-inter font-semibold text-[calc(12px*var(--size-ratio))] leading-[100%] text-center lowercase text-[#00029D]'}
+                    className={'absolute font-inter font-semibold text-[calc(12px*var(--size-ratio))] leading-[100%] text-center text-[#00029D]'}
                     style={{
                       width: `calc(100% - (${task.padding[1] + task.padding[3]}px)*var(--size-ratio))`,
                       height: `calc(100% - (${task.padding[0] + task.padding[2]}px)*var(--size-ratio))`

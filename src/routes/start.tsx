@@ -67,13 +67,19 @@ function Component() {
   const [loaded, setLoaded] = useState(false);
   const shouldShowStartRules = useProgressStore(state => state.shouldShowStartRules);
 
+  const next = () => {
+    router.navigate({ to: shouldShowStartRules ? '/rules' : '/path' })
+  }
+
   useEffect(() => {
     preloadAllImages().then(() => setLoaded(true));
   }, []);
 
-  const next = () => {
-    router.navigate({ to: shouldShowStartRules ? '/rules' : '/path' })
-  }
+  useEffect(() => {
+    if (!shouldShowStartRules) {
+      setTimeout(() => next(), 1400)
+    }
+  }, []);
 
   return (
     <div className={'relative bg-cover h-full'} style={{ backgroundImage: `url(${bg})` }}>
@@ -181,34 +187,36 @@ function Component() {
           alt=""
         />
       </motion.div>
-      <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2 }}
-          className={'flex flex-col items-center absolute top-[calc(112px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
-        >
-          <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(16px*var(--size-ratio))] pb-[calc(24px*var(--size-ratio))] pl-[calc(22px*var(--size-ratio))] w-full z-10'}>
-            <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведет к победе!</h3>
-            <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-              Каждый день мы сталкиваемся{'\n'}с различными вызовами: распечатать постеры, спланировать вечеринку, презентовать результаты работы клиенту. Одни задачи даются легче{' '}<span className={'font-extrabold text-[#EA5616]'}>зумерам</span>, другие —{' '}<span className={'font-extrabold text-[#EA5616]'}>миллениалам</span>. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}>синергии наших сильных сторон</span> для достижения общего результата. Готов испытать свои силы и доказать, что объединение навыков поможет справиться с любой трудностью?
-            </p>
+      {shouldShowStartRules && (
+        <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2 }}
+            className={'flex flex-col items-center absolute top-[calc(112px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+          >
+            <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(16px*var(--size-ratio))] pb-[calc(24px*var(--size-ratio))] pl-[calc(22px*var(--size-ratio))] w-full z-10'}>
+              <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведет к победе!</h3>
+              <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                Каждый день мы сталкиваемся{'\n'}с различными вызовами: распечатать постеры, спланировать вечеринку, презентовать результаты работы клиенту. Одни задачи даются легче{' '}<span className={'font-extrabold text-[#EA5616]'}>зумерам</span>, другие —{' '}<span className={'font-extrabold text-[#EA5616]'}>миллениалам</span>. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}>синергии наших сильных сторон</span> для достижения общего результата. Готов испытать свои силы и доказать, что объединение навыков поможет справиться с любой трудностью?
+              </p>
+            </motion.div>
+            <AnimatePresence>
+              {loaded && (
+                <Button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2, ease: 'linear' }}
+                  className={'mt-[calc(20px*var(--size-ratio))]'}
+                  onClick={next}
+                >
+                  Играть
+                </Button>
+              )}
+            </AnimatePresence>
           </motion.div>
-          <AnimatePresence>
-            {loaded && (
-              <Button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, ease: 'linear' }}
-                className={'mt-[calc(20px*var(--size-ratio))]'}
-                onClick={next}
-              >
-                Играть
-              </Button>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
+        </div>
+      )}
       <div className={'absolute bottom-[calc(20px*var(--size-ratio))] left-1/2 -translate-x-1/2 z-10 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full'}>
         <CookieNotification
           className={'relative bottom-0 left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))] z-10'}

@@ -38,7 +38,7 @@ export const MonsterCardBack = (props: Props) => {
         }}
       >
         <div 
-          className="relative w-full h-[calc(208.82px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] border-[#FFFFFF] bg-[#000000] pt-[calc(49.82px*var(--size-ratio))] overflow-auto"
+          className="relative w-full h-[calc(208.82px*var(--size-ratio))] rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] border-[#FFFFFF] bg-[#000000] pt-[calc(49.82px*var(--size-ratio))] overflow-hidden"
           style={{
             backgroundImage: `url(${monster.backSubBg})`,
             backgroundPositionY: 'calc(49.82px*var(--size-ratio))',
@@ -56,7 +56,7 @@ export const MonsterCardBack = (props: Props) => {
           </div>
         </div>
         <div 
-          className="mt-[calc(14px*var(--size-ratio))] flex relative w-full flex-grow rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] border-[#000000] py-[calc(12px*var(--size-ratio))] pl-[calc(24px*var(--size-ratio))] pr-[calc(12px*var(--size-ratio))] bg-[#FFFFFF] overflow-hidden"
+          className="mt-[calc(14px*var(--size-ratio))] flex relative w-full flex-grow rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] border-[#000000] py-[calc(12px*var(--size-ratio))] pl-[calc(24px*var(--size-ratio))] pr-[calc(8px*var(--size-ratio))] bg-[#FFFFFF] overflow-auto"
         >
           <svg className="absolute top-[calc(12px*var(--size-ratio))] left-[calc(11px*var(--size-ratio))] w-[calc(5px*var(--size-ratio))] h-[calc(17px*var(--size-ratio))]" viewBox="0 0 5 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.81932 10.2327L0.137135 4.54784V-6.10352e-05H4.23024V4.54784L3.54806 10.2327H0.81932ZM2.18369 16.2359C1.00124 16.2359 0.0234375 15.2581 0.0234375 14.0757C0.0234375 12.8932 1.00124 11.9154 2.18369 11.9154C3.36614 11.9154 4.34394 12.8932 4.34394 14.0757C4.34394 15.2581 3.36614 16.2359 2.18369 16.2359Z" fill="black"/>
