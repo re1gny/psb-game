@@ -15,12 +15,10 @@ function Component() {
   const [step, next] = useStep('full-loose', 0);
   const navigate = useNavigate();
   const restartState = useProgressStore(state => state.restart);
-  const applyStartRules = useProgressStore(state => state.applyStartRules);
 
   const restart = () => {
     navigate({ to: '/' })
     restartState()
-    applyStartRules();
   }
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import fireworks from "~/assets/images/final/fireworks.png";
 import {Button} from "~/shared/ui/Button";
 import {useStep} from "~/shared/lib/useStep";
 import {useEffect} from "react";
+import {useProgressStore} from "~/store/progressStore.ts";
 
 export const Route = createFileRoute('/final')({
   component: Component,
@@ -30,6 +31,10 @@ function Component() {
       setTimeout(() => next(), 1600)
     }
   }, [step])
+
+  useEffect(() => {
+    useProgressStore.persist.clearStorage();
+  }, [])
 
   return (
     <div className={'relative bg-cover h-full'} style={{ backgroundImage: `url(${bg})` }} onClick={click}>

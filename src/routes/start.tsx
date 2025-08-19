@@ -66,9 +66,13 @@ function Component() {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const shouldShowStartRules = useProgressStore(state => state.shouldShowStartRules);
+  const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
+  const isRestarted = useProgressStore(state => state.isRestarted);
+  const completeRestart = useProgressStore(state => state.completeRestart);
 
   const next = () => {
-    router.navigate({ to: shouldShowStartRules ? '/rules' : '/path' })
+    completeRestart();
+    router.navigate({ to: shouldShowStartRules ? '/rules' : shouldShowPathRules ? '/path-rules' : '/path' })
   }
 
   useEffect(() => {
@@ -76,7 +80,7 @@ function Component() {
   }, []);
 
   useEffect(() => {
-    if (!shouldShowStartRules) {
+    if (isRestarted) {
       setTimeout(() => next(), 1400)
     }
   }, []);
@@ -187,7 +191,7 @@ function Component() {
           alt=""
         />
       </motion.div>
-      {shouldShowStartRules && (
+      {!isRestarted && (
         <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

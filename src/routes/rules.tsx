@@ -1,5 +1,6 @@
 import {createFileRoute, useRouter} from '@tanstack/react-router'
 import { Rules } from '~/widgets/Rules'
+import {useProgressStore} from "~/store/progressStore.ts";
 
 export const Route = createFileRoute('/rules')({
   component: Component,
@@ -7,9 +8,12 @@ export const Route = createFileRoute('/rules')({
 
 function Component() {
   const router = useRouter();
+  const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
+  const applyStartRules = useProgressStore(state => state.applyStartRules);
 
   const play = () => {
-    router.navigate({ to: '/path-rules' })
+    applyStartRules();
+    router.navigate({ to: shouldShowPathRules ? '/path-rules' : '/path' })
   }
 
   return (

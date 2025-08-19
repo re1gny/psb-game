@@ -17,10 +17,11 @@ type Props = {
   blur?: boolean;
   pulse?: boolean;
   collectionRef?: React.RefObject<HTMLButtonElement | null>;
+  onPassRules?: () => void;
 }
 
 export const Path = (props: Props) => {
-  const { withRules, blur, pulse, collectionRef } = props;
+  const { withRules, blur, pulse, collectionRef, onPassRules } = props;
 
   const [step, next] = useStep('path', withRules ? 0 : 10);
   const [charactersModalOpened, setCharactersModalOpened] = useState(false);
@@ -39,6 +40,10 @@ export const Path = (props: Props) => {
   useEffect(() => {
     if (step === 0 || step === 2 || step === 4) {
       setTimeout(() => next(), 600);
+    }
+
+    if (step === 6) {
+      onPassRules?.();
     }
   }, [step])
 

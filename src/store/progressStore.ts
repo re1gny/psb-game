@@ -1,29 +1,38 @@
 import {create} from "zustand/react";
+import { persist, createJSONStorage } from 'zustand/middleware'
 import {Character} from "~/shared/constants/characters";
 
 export const MAX_LIVES = 3;
 export const INITIAL_AVAILABLE_CHARACTERS = [1, 2, 3, 6, 8];
 
 type Store = {
+  isPersisted: boolean;
+  isRestarted: boolean;
   remainingLives: number;
   passedLevels: number[];
   availableCharacters: number[];
   usedCharacters: number[];
   shouldShowStartRules: boolean;
+  shouldShowPathRules: boolean;
   shouldShowCardsRules: boolean;
   passLevel: (level: number, cards: Character[], newCards: Character[]) => void;
   looseLevel: (level: number) => void;
   restart: () => void;
   applyCardsRules: () => void;
   applyStartRules: () => void;
+  applyPathRules: () => void;
+  completeRestart: () => void;
 };
 
-export const useProgressStore = create<Store>((set, get) => ({
+export const useProgressStore = create<Store>()(persist((set, get) => ({
+  isPersisted: false,
+  isRestarted: false,
   remainingLives: MAX_LIVES,
   passedLevels: [],
   availableCharacters: INITIAL_AVAILABLE_CHARACTERS,
   usedCharacters: [],
   shouldShowStartRules: true,
+  shouldShowPathRules: true,
   shouldShowCardsRules: true,
   passLevel: (level: number, winCards: Character[], newCards: Character[]) => {
     set(prev => ({
@@ -45,6 +54,7 @@ export const useProgressStore = create<Store>((set, get) => ({
       passedLevels: [],
       availableCharacters: INITIAL_AVAILABLE_CHARACTERS,
       usedCharacters: [],
+      isRestarted: true,
     })
   },
   applyCardsRules: () => {
@@ -53,4 +63,25 @@ export const useProgressStore = create<Store>((set, get) => ({
   applyStartRules: () => {
     set({ shouldShowStartRules: false })
   },
+  applyPathRules: () => {
+    set({ shouldShowPathRules: false })
+  },
+  completeRestart: () => {
+    set({ isRestarted: false })
+  },
+}), {
+  name: 'progress-storage',
+  storage: createJSONStorage(() => localStorage),
+  partialize: (state) => ({
+    remainingLives: state.remainingLives,
+    passedLevels: state.passedLevels,
+    availableCharacters: state.availableCharacters,
+    usedCharacters: state.usedCharacters,
+    shouldShowStartRules: state.shouldShowStartRules,
+    shouldShowCardsRules: state.shouldShowCardsRules,
+    shouldShowPathRules: state.shouldShowPathRules,
+  }),
+  merge: (persistedState: any, currentState) => {
+    return ({ ...currentState, ...persistedState, isPersisted: !!persistedState })
+  }
 }));
