@@ -16,12 +16,6 @@ export const Route = createFileRoute('/final')({
 function Component() {
   const [step, next] = useStep('final', 1)
 
-  const click = () => {
-    if (step === 2) {
-      next();
-    }
-  }
-
   const finish = () => {
     window.open('https://t.me/psb_team', '_blank')
   }
@@ -37,7 +31,7 @@ function Component() {
   }, [])
 
   return (
-    <div className={'relative bg-cover h-full'} style={{ backgroundImage: `url(${bg})` }} onClick={click}>
+    <div className={'relative bg-cover h-full'} style={{ backgroundImage: `url(${bg})` }}>
       <div className={'absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))]'}>
         <AnimatePresence>
           {step === 1 && (
@@ -71,7 +65,7 @@ function Component() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className={'absolute top-[calc(237px*var(--size-ratio))] left-[calc(-84px*var(--size-ratio))] h-[calc(580px*var(--size-ratio))] w-[calc(569.83px*var(--size-ratio))]'}
+              className={'absolute top-[calc(177px*var(--size-ratio))] left-[calc(-84px*var(--size-ratio))] h-[calc(580px*var(--size-ratio))] w-[calc(573.83px*var(--size-ratio))]'}
               src={characters}
               alt=""
             />
@@ -79,18 +73,30 @@ function Component() {
         </AnimatePresence>
         <AnimatePresence>
           {step === 2 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className={'flex flex-col items-center absolute top-[calc(84px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
-            >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] w-full z-10'}>
-                <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
-                  Ты только что доказал, что идеальная команда зависит{'\n'}не от возраста, а от правильного сочетания навыков.{' '}<span className={'font-extrabold text-[#EA5616]'}>Креативность, опыт и командная работа</span>{' '}—{'\n'}вот что помогает побеждать{'\n'}любых монстров!
-                </p>
+            <>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className={'flex flex-col items-center absolute top-[calc(84px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+              >
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                    Ты только что доказал, что идеальная команда зависит{'\n'}не от возраста, а от правильного сочетания навыков.{' '}<span className={'font-extrabold text-[#EA5616]'}>Креативность, опыт и командная работа</span>{' '}—{'\n'}вот что помогает побеждать{'\n'}любых монстров!
+                  </p>
+                </motion.div>
               </motion.div>
-            </motion.div>
+              <div className={'absolute top-[calc(570px*var(--size-ratio))] left-1/2 -translate-x-1/2'}>
+                <Button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={next}
+                >
+                  Далее
+                </Button>
+              </div>
+            </>
           )}
         </AnimatePresence>
         <AnimatePresence>
