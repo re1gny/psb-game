@@ -79,7 +79,7 @@ export const Rules = (props: Props) => {
             >
               <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(20px*var(--size-ratio))] pb-[calc(22px*var(--size-ratio))] pl-[calc(20px*var(--size-ratio))] w-full z-10'}>
                 <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                  Ты столкнёшься с жизненными монстрами-задачами, но не пугайся! В арсенале у тебя будут крутые персонажи: каждый со своими сильными сторонами.{' '}<span className={'font-extrabold text-[#EA5616]'}>Твоя цель — правильно подобрать комбинацию карт</span>, чтобы справиться со всеми челленджами
+                  Ты столкнёшься с жизненными монстрами-задачами, но не пугайся! В арсенале у тебя будут крутые персонажи: каждый со своими сильными сторонами.{' '}<span className={'font-extrabold text-[#EA5616]'}>Твоя цель — правильно подобрать комбинацию карт</span>, чтобы справиться со всеми челленджами
                 </p>
               </motion.div>
               <Button className={'mt-[calc(20px*var(--size-ratio))]'} onClick={next}>
@@ -100,9 +100,7 @@ export const Rules = (props: Props) => {
             >
               <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(21px*var(--size-ratio))] pb-[calc(23px*var(--size-ratio))] pl-[calc(21px*var(--size-ratio))] w-full z-10'}>
                 <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                  Чтобы справиться с монстрами, внимательно читай описания карт — в них указаны сильные и слабые стороны персонажей.
-                  <br/>
-                  <span className={'font-extrabold text-[#EA5616]'}>Если ты выбрал правильную комбинацию, то монстр побеждён, если нет — придётся начать уровень сначала.</span>{' '}После каждой победы ты будешь получать нового героя, который пригодится в следующих сражениях
+                  Чтобы справиться с монстрами, внимательно читай описания карт — в них указаны сильные и слабые стороны персонажей.<br/><span className={'font-extrabold text-[#EA5616]'}>Если ты выбрал правильную комбинацию, то монстр побеждён, если нет — придётся начать уровень сначала.</span>{' '}После каждой победы ты будешь получать нового героя, который пригодится в следующих сражениях
                 </p>
               </motion.div>
               <svg className={'absolute bottom-[calc(-1px*var(--size-ratio))] translate-y-full w-[calc(16px*var(--size-ratio))] h-[calc(69px*var(--size-ratio))]'} viewBox="0 0 16 69" fill="none" xmlns="http://www.w3.org/2000/svg">

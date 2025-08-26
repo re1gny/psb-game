@@ -109,6 +109,12 @@ export const CharacterCardBack = (props: Props) => {
               alt=""
             />
           </div>
+          <div
+            className={`flex items-center justify-center absolute z-10 bottom-[calc(-1px*var(--size-ratio))] right-[calc(-1px*var(--size-ratio))] rounded-[calc(8px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] bg-[#FFFFFF] py-[calc(5px*var(--size-ratio))] px-[calc(7px*var(--size-ratio))]`}
+            style={{ borderColor: character.borderColor }}
+          >
+            <span className="whitespace-pre-line font-gilroy font-extrabold text-[calc(18px*var(--size-ratio))] leading-[100%] text-[#000000]">{character.age}</span>
+          </div>
         </div>
         <div
           className={`mt-[calc(14px*var(--size-ratio))] flex flex-col relative w-full flex-grow rounded-[calc(8.79px*var(--size-ratio))] border-[calc(1.76px*var(--size-ratio))] py-[calc(8px*var(--size-ratio))] pr-[calc(6px*var(--size-ratio))] bg-[#FFFFFF] overflow-auto`}

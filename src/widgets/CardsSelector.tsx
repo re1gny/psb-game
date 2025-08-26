@@ -273,7 +273,7 @@ export const CardsSelector = (props: Props) => {
                   className={`absolute top-[calc(185px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))] flex flex-col items-center`}
                 >
                   <div className="w-full bg-[#FFFFFF] rounded-[calc(7.41px*var(--size-ratio))] border-[calc(1.48px*var(--size-ratio))] border-[#000000] p-[calc(20px*var(--size-ratio))]">
-                    <p className="whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]">
+                    <p className="whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center">
                       Ты уверен в выборе героев?{'\n'}После нажатия этой кнопки{'\n'}ты не сможешь их поменять
                     </p>
                   </div>

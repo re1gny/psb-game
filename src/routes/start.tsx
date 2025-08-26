@@ -18,6 +18,7 @@ import {Button} from "~/shared/ui/Button";
 import {preloadAllImages} from "~/shared/lib/preloadImages";
 import {useEffect, useState} from "react";
 import {useProgressStore} from "~/store/progressStore.ts";
+import {reachMetrikaGoal} from "~/shared/lib/reachMetrikaGoal.ts";
 
 export const Route = createFileRoute('/start')({
   component: Component,
@@ -72,6 +73,7 @@ function Component() {
 
   const next = () => {
     completeRestart();
+    reachMetrikaGoal('start')
     router.navigate({ to: shouldShowStartRules ? '/rules' : shouldShowPathRules ? '/path-rules' : '/path' })
   }
 
@@ -200,9 +202,9 @@ function Component() {
             className={'flex flex-col items-center absolute top-[calc(112px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
           >
             <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(16px*var(--size-ratio))] pb-[calc(24px*var(--size-ratio))] pl-[calc(22px*var(--size-ratio))] w-full z-10'}>
-              <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведет к победе!</h3>
+              <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[108%] tracking-normal text-center text-[#EA5616]'}>Командная сила ведёт к победе!</h3>
               <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                Каждый день мы сталкиваемся{'\n'}с различными вызовами: распечатать постеры, спланировать вечеринку, презентовать результаты работы клиенту. Одни задачи даются легче{' '}<span className={'font-extrabold text-[#EA5616]'}>зумерам</span>, другие —{' '}<span className={'font-extrabold text-[#EA5616]'}>миллениалам</span>. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}>синергии наших сильных сторон</span> для достижения общего результата. Готов испытать свои силы и доказать, что объединение навыков поможет справиться с любой трудностью?
+                Каждый день мы сталкиваемся с различными вызовами: распечатать постеры, спланировать вечеринку, презентовать результаты работы клиенту. Одни задачи даются легче{' '}<span className={'font-extrabold text-[#EA5616]'}>зумерам</span>, другие —{' '}<span className={'font-extrabold text-[#EA5616]'}>миллениалам</span>. Но речь не о том, кто круче — дело в <span className={'font-extrabold text-[#EA5616]'}>синергии наших сильных сторон</span>{' '}для достижения общего результата. Готов испытать свои силы и доказать, что объединение навыков поможет справиться с любой трудностью?
               </p>
             </motion.div>
             <AnimatePresence>

@@ -6,32 +6,11 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { useCallback, useLayoutEffect, useRef, useState} from "react";
 import type {CSSProperties} from "react";
-import appCss from '~/styles/app.css?url'
-import { generateSeo } from '~/shared/lib/generateSeo'
 import {getSizeRatio} from "~/shared/lib/getSizeRatio";
 import {AnimatedOutlet} from "~/shared/ui/AnimatedOutlet";
 import { useLayoutStore } from '~/store/layoutStore';
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      ...generateSeo({
-        title: 'ПСБ',
-        description: `ПСБ`,
-      }),
-    ],
-    links: [
-      { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: './favicon.ico' },
-    ],
-  }),
   shellComponent: RootDocument,
 })
 

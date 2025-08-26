@@ -83,6 +83,7 @@ export type Character = {
     backImageY: number;
     backImageWidth: number;
     backImageHeight: number;
+    age: string;
 };
 
 export const CHARACTER_1: Character = {
@@ -109,6 +110,7 @@ export const CHARACTER_1: Character = {
     backImageY: 27,
     backImageWidth: 257,
     backImageHeight: 257,
+    age: '22 года',
 };
 
 export const CHARACTER_2: Character = {
@@ -137,6 +139,7 @@ export const CHARACTER_2: Character = {
     backImageY: 40,
     backImageWidth: 287,
     backImageHeight: 287,
+    age: '48 лет',
 };
 
 export const CHARACTER_3: Character = {
@@ -151,7 +154,7 @@ export const CHARACTER_3: Character = {
     borderColor: '#2C2D84',
     backSubBg: backSubBg3,
     pros: [
-        'Может найти любое решение проблемы в YouTube, а его любимый канал — Wylsacom',
+        'Может найти любое решение проблемы в YouTube, а его любимый канал — Wylsacom',
         'Знает, как переформатировать любой файл в пдф-ку',
     ],
     cons: [
@@ -166,6 +169,7 @@ export const CHARACTER_3: Character = {
     backImageY: 47,
     backImageWidth: 279,
     backImageHeight: 279,
+    age: '24 года'
 };
 
 export const CHARACTER_4: Character = {
@@ -196,6 +200,7 @@ export const CHARACTER_4: Character = {
     backImageY: 56,
     backImageWidth: 217,
     backImageHeight: 217,
+    age: '46 лет'
 };
 
 export const CHARACTER_5: Character = {
@@ -225,6 +230,7 @@ export const CHARACTER_5: Character = {
     backImageY: 37,
     backImageWidth: 287,
     backImageHeight: 287,
+    age: '19 лет'
 };
 
 export const CHARACTER_6: Character = {
@@ -253,6 +259,7 @@ export const CHARACTER_6: Character = {
     backImageY: 39,
     backImageWidth: 180,
     backImageHeight: 271,
+    age: '51 год'
 };
 
 export const CHARACTER_7: Character = { 
@@ -282,6 +289,7 @@ export const CHARACTER_7: Character = {
     backImageY: 36,
     backImageWidth: 186,
     backImageHeight: 287,
+    age: '23 года'
 };
 
 export const CHARACTER_8: Character = {
@@ -310,6 +318,7 @@ export const CHARACTER_8: Character = {
     backImageY: 50,
     backImageWidth: 187,
     backImageHeight: 281,
+    age: '33 года'
 };
 
 export const CHARACTER_9: Character = {
@@ -326,7 +335,7 @@ export const CHARACTER_9: Character = {
     backSubBg: backSubBg9,
     pros: [
       'Может поддержать морально\nв любой ситуации',
-      'Ходячий цитатник Брайана Трейси, Кови и Джо Диспензы. «Каждое утро —\nшанс начать сначала»,\n«Не ошибается тот, кто ничего не делает» — её Telegram-канал — хранилище мотивационных фраз'
+      'Ходячий цитатник Брайана Трейси, Кови и Джо Диспензы. «Каждое утро — шанс начать сначала», «Не ошибается тот, кто ничего не делает» — её Telegram-канал — хранилище мотивационных фраз'
     ],
     cons: [
       'Боится Excel-таблиц, а формулы ВПР снятся ей в кошмарах'
@@ -339,6 +348,7 @@ export const CHARACTER_9: Character = {
     backImageY: 34,
     backImageWidth: 267,
     backImageHeight: 267,
+    age: '36 лет'
 };
 
 export const CHARACTER_10: Character = {
@@ -368,6 +378,7 @@ export const CHARACTER_10: Character = {
     backImageY: 45,
     backImageWidth: 164,
     backImageHeight: 251,
+    age: '38 лет'
 };
 
 export const ALL_CHARACTERS = [CHARACTER_1, CHARACTER_2, CHARACTER_3, CHARACTER_6, CHARACTER_8, CHARACTER_4, CHARACTER_5, CHARACTER_7, CHARACTER_9, CHARACTER_10];

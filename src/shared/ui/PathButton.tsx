@@ -15,7 +15,7 @@ export const PathButton = (props: Props) => {
     <motion.div className={`absolute w-[calc(81.94px*var(--size-ratio))] h-[calc(81.94px*var(--size-ratio))] ${className ?? ''}`} {...rest}>
       <div className={'absolute top-[calc(5px*var(--size-ratio))] left-[calc(5px*var(--size-ratio))] w-full h-full rounded-[calc(8.81px*var(--size-ratio))] bg-[#FFFFFF] z-10'} />
       <button
-        className={`relative w-full h-full flex items-center justify-center border-2 border-[#000000] bg-[#EA5616] rounded-[calc(8.81px*var(--size-ratio))] z-20 transition-transform duration-300 active:translate-x-[calc(5px*var(--size-ratio))] active:translate-y-[calc(5px*var(--size-ratio))] ${locked || passed ? 'pointer-events-none' : 'pointer-events-auto'}`}
+        className={`relative w-full h-full flex items-center justify-center border-2 border-[#000000] bg-[#EA5616] rounded-[calc(8.81px*var(--size-ratio))] z-20 transition-transform duration-300 active:translate-x-[calc(5px*var(--size-ratio))] active:translate-y-[calc(5px*var(--size-ratio))] ${!locked && !passed ? 'shadow-[5px_5px_0px_0px_#FFFFFF,_3px_3px_50px_20px_#FFFFFF4D]' : ''} ${locked || passed ? 'pointer-events-none' : 'pointer-events-auto'}`}
         disabled={locked || passed}
         onClick={onClick}
       >

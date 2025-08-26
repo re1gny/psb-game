@@ -15,12 +15,27 @@ import { MonsterCardBack } from '~/shared/ui/MonsterCardBack';
 import { ALL_MONSTERS } from '~/shared/constants/monsters';
 import {CardsSelector} from "~/widgets/CardsSelector";
 import {useStep} from "~/shared/lib/useStep";
+import {reachMetrikaGoal} from "~/shared/lib/reachMetrikaGoal.ts";
 
 type Props = {
   level: Level;
   hasReset: boolean;
   onReset: () => void;
 }
+
+const LEVEL_TO_START_NAME: Record<number, string> = {
+  1: 'start_level1',
+  2: 'start_level2',
+  3: 'start_level3',
+  4: 'start_level4',
+};
+
+const LEVEL_TO_FINISH_NAME: Record<number, string> = {
+  1: 'finish_level1',
+  2: 'finish_level2',
+  3: 'finish_level3',
+  4: 'finish_level4',
+};
 
 export function LevelGame({ level, hasReset, onReset }: Props) {
   const [step, next] = useStep(`level-${level.id}`, hasReset ? 4 : 1);
@@ -88,8 +103,14 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
   }
 
   const winContinue = async () => {
+    reachMetrikaGoal(LEVEL_TO_FINISH_NAME[level.id]);
     await navigate({ to: `/level-${level.id}-win` })
     passLevel(level.id, selectedCards, newCharacters);
+  }
+
+  const handleStart = () => {
+    reachMetrikaGoal(LEVEL_TO_START_NAME[level.id]);
+    next();
   }
 
   useEffect(() => {
@@ -351,7 +372,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
                     {level.introText}
                   </p>
                 </motion.div>
-                <Button className={'mt-[calc(20px*var(--size-ratio))]'} onClick={next}>
+                <Button className={'mt-[calc(20px*var(--size-ratio))]'} onClick={handleStart}>
                   Далее
                 </Button>
               </div>
@@ -386,7 +407,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
               className={'flex flex-col items-center absolute top-[calc(208px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
             >
               <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
-                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] pr-[calc(18px*var(--size-ratio))] w-full z-10'}>
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] pr-[calc(25px*var(--size-ratio))] w-full z-10'}>
                   <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[100%] text-[#EA5616] text-center'}>Подсказка</h3>
                   <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                     {level.hintText}
