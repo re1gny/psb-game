@@ -158,7 +158,7 @@ export const CardsSelector = (props: Props) => {
                         className="absolute top-0 left-0 w-full h-full py-[calc(10px*var(--size-ratio))] px-[calc(20px*var(--size-ratio))] flex items-center justify-center"
                       >
                         <p className="whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-center text-[#000000]">
-                          {step === 1 || step === 2 ? 'Чтобы выбрать героя\nдля сражения, отмечай\nего галочкой' : 'Если захочешь поменять\nгероя, нажми на галочку\nеще раз'}
+                          {step === 1 || step === 2 ? 'Чтобы выбрать героя\nдля сражения, отмечай\nего галочкой' : 'Если захочешь поменять\nгероя, нажми на галочку\nещё раз'}
                         </p>
                       </motion.div>
                     </AnimatePresence>

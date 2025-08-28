@@ -120,7 +120,7 @@ function Component() {
                   {[
                     'Находить креативные решения',
                     'Применять любые знания\nи опыт на практике',
-                    'Не бояться нестандартных\nи страшных задач',
+                    'Не бояться нестандартных\nи сложных задач',
                   ].map((item, index) => (
                     <li key={index} className={`flex items-center ${index === 0 ? '' : 'mt-[calc(16px*var(--size-ratio))]'} `}>
                       <div className={'shrink-0 flex items-center justify-center w-[calc(31px*var(--size-ratio))] h-full translate-x-[calc(-4px*var(--size-ratio))]'}>
