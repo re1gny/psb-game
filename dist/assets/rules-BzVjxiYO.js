@@ -1,1 +1,0 @@
-import{u as r,j as e}from"./index-Uz-gSZ-6.js";import{R as n}from"./Rules-T-DKLZz0.js";import"./overlay-D8PpJAjH.js";import"./Button-uD89Pmsp.js";import"./useStep-D40PSQLG.js";const l=function(){const o=r(),t=()=>{o.navigate({to:"/path-rules"})};return e.jsx(n,{className:"relative h-full",onPlay:t})};export{l as component};
