@@ -1,0 +1,1 @@
+import{j as e,N as o}from"./index-bBi-YQRx.js";import{u as s}from"./progressStore-kDS4g2bT.js";const p=function(){const r=s(t=>t.isPersisted),u=s(t=>t.isRestarted),a=s(t=>t.shouldShowStartRules),n=s(t=>t.shouldShowPathRules);return r&&!u?e.jsx(o,{to:a?"/rules":n?"/path-rules":"/path",replace:!0}):e.jsx(o,{to:"/start",replace:!0})};export{p as component};
