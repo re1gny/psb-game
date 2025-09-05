@@ -72,12 +72,6 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
     navigate({ to: '/path' })
   }
 
-  const handleClick = () => {
-    if (step === 4) {
-      next();
-    }
-  }
-
   const applySelector = (selectedCharacters: Character[]) => {
     setSelectedCards(selectedCharacters);
     setCardsSelectorOpened(false);
@@ -150,7 +144,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
 
   return (
     <>
-      <div className={'relative h-full'} onClick={handleClick}>
+      <div className={'relative h-full'}>
         <div className={`absolute top-0 left-0 w-full h-full transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : ''}`}>
           <img 
             className={'absolute min-w-full'} 
@@ -404,15 +398,18 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className={'flex flex-col items-center absolute top-[calc(208px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+              className={'flex flex-col items-center absolute top-[calc(148px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
             >
-              <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
+              <div className={'flex flex-col items-center absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
                 <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] pr-[calc(25px*var(--size-ratio))] w-full z-10'}>
                   <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[100%] text-[#EA5616] text-center'}>Подсказка</h3>
                   <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
                     {level.hintText}
                   </p>
                 </motion.div>
+                <Button className={'mt-[calc(20px*var(--size-ratio))] shrink-0'} onClick={next}>
+                  Далее
+                </Button>
               </div>
             </motion.div>
           )}
