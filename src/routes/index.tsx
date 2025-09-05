@@ -9,11 +9,10 @@ function Component() {
   const isPersisted = useProgressStore(state => state.isPersisted);
   const isRestarted = useProgressStore(state => state.isRestarted);
   const shouldShowStartRules = useProgressStore(state => state.shouldShowStartRules);
-  const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
 
   if (isPersisted && !isRestarted) {
     return (
-      <Navigate to={shouldShowStartRules ? '/rules' : shouldShowPathRules ? '/path-rules' : '/path'} replace={true} />
+      <Navigate to={shouldShowStartRules ? '/rules' : '/path'} replace={true} />
     )
   }
 

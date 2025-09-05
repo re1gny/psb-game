@@ -10,12 +10,13 @@ export const Route = createFileRoute('/rules')({
 function Component() {
   const router = useRouter();
   const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
+  const passedLevels = useProgressStore(state => state.passedLevels);
   const applyStartRules = useProgressStore(state => state.applyStartRules);
 
   const play = () => {
     applyStartRules();
     reachMetrikaGoal('start_after_training')
-    router.navigate({ to: shouldShowPathRules ? '/path-rules' : '/path' })
+    router.navigate({ to: passedLevels.includes(1) ? '/path' : '/level-1' })
   }
 
   return (

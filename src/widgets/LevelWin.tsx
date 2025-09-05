@@ -8,6 +8,7 @@ import {ALL_CHARACTERS} from "~/shared/constants/characters";
 import {ALL_LEVELS} from "~/shared/constants/levels";
 import {useStep} from "~/shared/lib/useStep";
 import {NewCards} from "~/widgets/NewCards";
+import {useProgressStore} from "~/store/progressStore.ts";
 
 type Props = {
   level: Level;
@@ -18,6 +19,8 @@ export function LevelWin({ level }: Props) {
   const navigate = useNavigate();
   const [finished, setFinished] = useState(false);
   const collectionRef = useRef<HTMLButtonElement>(null);
+  const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
+  const applyPathRules = useProgressStore(state => state.applyPathRules);
 
   const winCards = ALL_CHARACTERS.filter((item) => level.correctCharacters.includes(item.id));
   const newCards = ALL_CHARACTERS.filter((item) => level.winNewCharacters.includes(item.id));
@@ -55,7 +58,13 @@ export function LevelWin({ level }: Props) {
 
   return (
     <>
-      <Path withRules={false} blur={step === 1 || step === 3} pulse={finished} collectionRef={collectionRef} />
+      <Path
+        withRules={shouldShowPathRules && step === 5}
+        blur={step === 1 || step === 3}
+        pulse={finished}
+        collectionRef={collectionRef}
+        onPassRules={applyPathRules}
+      />
       <AnimatePresence>
         {step === 1 && (
           <WinCards cards={winCards} />

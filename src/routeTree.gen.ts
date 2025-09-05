@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StartRouteImport } from './routes/start'
 import { Route as RulesRouteImport } from './routes/rules'
-import { Route as PathRulesRouteImport } from './routes/path-rules'
 import { Route as PathRouteImport } from './routes/path'
 import { Route as Level4WinRouteImport } from './routes/level-4-win'
 import { Route as Level4RouteImport } from './routes/level-4'
@@ -33,11 +32,6 @@ const StartRoute = StartRouteImport.update({
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PathRulesRoute = PathRulesRouteImport.update({
-  id: '/path-rules',
-  path: '/path-rules',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathRoute = PathRouteImport.update({
@@ -114,7 +108,6 @@ export interface FileRoutesByFullPath {
   '/level-4': typeof Level4Route
   '/level-4-win': typeof Level4WinRoute
   '/path': typeof PathRoute
-  '/path-rules': typeof PathRulesRoute
   '/rules': typeof RulesRoute
   '/start': typeof StartRoute
 }
@@ -131,7 +124,6 @@ export interface FileRoutesByTo {
   '/level-4': typeof Level4Route
   '/level-4-win': typeof Level4WinRoute
   '/path': typeof PathRoute
-  '/path-rules': typeof PathRulesRoute
   '/rules': typeof RulesRoute
   '/start': typeof StartRoute
 }
@@ -149,7 +141,6 @@ export interface FileRoutesById {
   '/level-4': typeof Level4Route
   '/level-4-win': typeof Level4WinRoute
   '/path': typeof PathRoute
-  '/path-rules': typeof PathRulesRoute
   '/rules': typeof RulesRoute
   '/start': typeof StartRoute
 }
@@ -168,7 +159,6 @@ export interface FileRouteTypes {
     | '/level-4'
     | '/level-4-win'
     | '/path'
-    | '/path-rules'
     | '/rules'
     | '/start'
   fileRoutesByTo: FileRoutesByTo
@@ -185,7 +175,6 @@ export interface FileRouteTypes {
     | '/level-4'
     | '/level-4-win'
     | '/path'
-    | '/path-rules'
     | '/rules'
     | '/start'
   id:
@@ -202,7 +191,6 @@ export interface FileRouteTypes {
     | '/level-4'
     | '/level-4-win'
     | '/path'
-    | '/path-rules'
     | '/rules'
     | '/start'
   fileRoutesById: FileRoutesById
@@ -220,7 +208,6 @@ export interface RootRouteChildren {
   Level4Route: typeof Level4Route
   Level4WinRoute: typeof Level4WinRoute
   PathRoute: typeof PathRoute
-  PathRulesRoute: typeof PathRulesRoute
   RulesRoute: typeof RulesRoute
   StartRoute: typeof StartRoute
 }
@@ -239,13 +226,6 @@ declare module '@tanstack/react-router' {
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/path-rules': {
-      id: '/path-rules'
-      path: '/path-rules'
-      fullPath: '/path-rules'
-      preLoaderRoute: typeof PathRulesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/path': {
@@ -348,7 +328,6 @@ const rootRouteChildren: RootRouteChildren = {
   Level4Route: Level4Route,
   Level4WinRoute: Level4WinRoute,
   PathRoute: PathRoute,
-  PathRulesRoute: PathRulesRoute,
   RulesRoute: RulesRoute,
   StartRoute: StartRoute,
 }

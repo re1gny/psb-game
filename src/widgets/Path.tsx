@@ -23,13 +23,19 @@ type Props = {
 export const Path = (props: Props) => {
   const { withRules, blur, pulse, collectionRef, onPassRules } = props;
 
-  const [step, next] = useStep('path', withRules ? 0 : 10);
+  const [step, next, _, setStep] = useStep('path', 10);
   const [charactersModalOpened, setCharactersModalOpened] = useState(false);
   const [monstersModalOpened, setMonstersModalOpened] = useState(false);
   const [rulesModalOpened, setRulesModalOpened] = useState(false);
   const router = useRouter();
   const passedLevels = useProgressStore(state => state.passedLevels);
   const remainingLives = useProgressStore(state => state.remainingLives);
+
+  useEffect(() => {
+    if (withRules) {
+      setStep(0)
+    }
+  }, [withRules]);
 
   const play = (level: number) => {
     router.navigate({ to: `/level-${level}` })

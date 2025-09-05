@@ -67,14 +67,14 @@ function Component() {
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const shouldShowStartRules = useProgressStore(state => state.shouldShowStartRules);
-  const shouldShowPathRules = useProgressStore(state => state.shouldShowPathRules);
   const isRestarted = useProgressStore(state => state.isRestarted);
+  const passedLevels = useProgressStore(state => state.passedLevels);
   const completeRestart = useProgressStore(state => state.completeRestart);
 
   const next = () => {
     completeRestart();
     reachMetrikaGoal('start')
-    router.navigate({ to: shouldShowStartRules ? '/rules' : shouldShowPathRules ? '/path-rules' : '/path' })
+    router.navigate({ to: shouldShowStartRules ? '/rules' : passedLevels.includes(1) ? '/path' : '/level-1' })
   }
 
   useEffect(() => {

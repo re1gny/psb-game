@@ -13,5 +13,5 @@ export const useStep = (key: string, initialStep: number) => {
     setStep(initialStep);
   };
 
-  return [step, next, reset] as const;
+  return [step, next, reset, setStep] as const;
 };
