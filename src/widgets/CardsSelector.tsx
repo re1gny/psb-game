@@ -10,6 +10,7 @@ import {useStep} from "~/shared/lib/useStep";
 
 type Props = HTMLMotionProps<'div'> & {
   className?: string;
+  hints?: Record<number, string>;
   opened: boolean;
   applied: boolean;
   withRules: boolean;
@@ -45,7 +46,7 @@ const Card = ({ character, disabled, checked, applied, onCheck, highlightCheck }
 }
 
 export const CardsSelector = (props: Props) => {
-  const { className, opened, applied, withRules, onClose, onApply, ...rest } = props;
+  const { className, hints, opened, applied, withRules, onClose, onApply, ...rest } = props;
 
   const availableCharacterIds = useProgressStore(state => state.availableCharacters);
   const usedCharacters = useProgressStore(state => state.usedCharacters);
@@ -133,6 +134,22 @@ export const CardsSelector = (props: Props) => {
                 <span className="font-inter font-semibold text-[calc(20px*var(--size-ratio))] leading-[100%] text-[#FFFFFF]">
                   {checkedCharacters.length}/{MAX_CHECKED_CHARACTERS}
                 </span>
+                <AnimatePresence>
+                  {currentCharacter && hints?.[currentCharacter.id] && (
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 w-full px-[calc(60px*var(--size-ratio))] whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#FFFFFF] text-center drop-shadow-[0px_0px_4px_#FFFFFF]"
+                    >
+                      <motion.div
+                        key={hints[currentCharacter.id]}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                      >
+                        {hints[currentCharacter.id]}
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
                 <CloseButton className="ml-auto" onClick={onClose} />
               </motion.div> 
             )}

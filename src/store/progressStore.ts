@@ -15,12 +15,14 @@ type Store = {
   shouldShowStartRules: boolean;
   shouldShowPathRules: boolean;
   shouldShowCardsRules: boolean;
+  shouldShowLevelHintRules: boolean;
   passLevel: (level: number, cards: Character[], newCards: Character[]) => void;
   looseLevel: (level: number) => void;
   restart: () => void;
   applyCardsRules: () => void;
   applyStartRules: () => void;
   applyPathRules: () => void;
+  applyLevelHintRules: () => void;
   completeRestart: () => void;
 };
 
@@ -34,6 +36,7 @@ export const useProgressStore = create<Store>()(persist((set, get) => ({
   shouldShowStartRules: true,
   shouldShowPathRules: true,
   shouldShowCardsRules: true,
+  shouldShowLevelHintRules: true,
   passLevel: (level: number, winCards: Character[], newCards: Character[]) => {
     set(prev => ({
       passedLevels: [...prev.passedLevels, level],
@@ -66,6 +69,9 @@ export const useProgressStore = create<Store>()(persist((set, get) => ({
   applyPathRules: () => {
     set({ shouldShowPathRules: false })
   },
+  applyLevelHintRules: () => {
+    set({ shouldShowLevelHintRules: false })
+  },
   completeRestart: () => {
     set({ isRestarted: false })
   },
@@ -80,6 +86,7 @@ export const useProgressStore = create<Store>()(persist((set, get) => ({
     shouldShowStartRules: state.shouldShowStartRules,
     shouldShowCardsRules: state.shouldShowCardsRules,
     shouldShowPathRules: state.shouldShowPathRules,
+    shouldShowLevelHintRules: state.shouldShowLevelHintRules,
   }),
   merge: (persistedState: any, currentState) => {
     return ({ ...currentState, ...persistedState, isPersisted: !!persistedState })

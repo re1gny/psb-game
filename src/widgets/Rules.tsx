@@ -26,31 +26,25 @@ export const Rules = (props: Props) => {
     onPlay();
   }
 
-  const handleClick = () => {
-    if (step === 3) {
-      next()
-    }
-  }
-
   useEffect(() => {
-    if (step === 0 || step === 2 || step === 4) {
+    if (step === 0 || step === 2) {
       setTimeout(() => next(), 600);
     }
   }, [step])
 
-  const hasBlur = step === 1 || step === 3 || step === 5;
+  const hasBlur = step === 1 || step === 3;
 
   return (
-    <motion.div className={`relative w-full h-full ${className ?? ''}`} onClick={handleClick} {...rest}>
+    <motion.div className={`relative w-full h-full ${className ?? ''}`} {...rest}>
       <div className={`absolute top-0 left-0 w-full h-full transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : ''}`}>
         <img className={'absolute top-[calc(-38px*var(--size-ratio))] left-[calc(-14px*var(--size-ratio))] w-[calc(402px*var(--size-ratio))] h-[calc(340px*var(--size-ratio))] min-w-full'} src={bgTop1} alt="" />
         <img className={'absolute top-[calc(-51px*var(--size-ratio))] left-[calc(-105px*var(--size-ratio))] w-[calc(773.94px*var(--size-ratio))] h-[calc(425.5px*var(--size-ratio))] min-w-full'} src={bgTop2} alt="" />
         <img className={'absolute top-[calc(312px*var(--size-ratio))] left-[calc(-72px*var(--size-ratio))] w-[calc((497px+72px)*var(--size-ratio))] h-[calc(439px*var(--size-ratio))] min-w-full'} src={bgBottom} alt="" />
       </div>
-      <LivesScore className={`absolute top-[calc(20px*var(--size-ratio))] left-1/2 -translate-x-1/2 transition-[filter] duration-200 ${hasBlur && step !== 5 ? 'blur pointer-events-none' : 'z-20'}`} remainingLives={MAX_LIVES} />
+      <LivesScore className={`absolute top-[calc(20px*var(--size-ratio))] left-1/2 -translate-x-1/2 transition-[filter] duration-200 ${hasBlur && step !== 3 ? 'blur pointer-events-none' : 'z-20'}`} remainingLives={MAX_LIVES} />
       <img className={`absolute top-[calc(119px*var(--size-ratio))] left-[calc(121px*var(--size-ratio))] w-[calc(285px*var(--size-ratio))] h-[calc(285px*var(--size-ratio))] transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : ''}`} src={monster} alt="" />
       <CardsStack 
-        className={`absolute bottom-[calc(18px*var(--size-ratio))] left-1/2 -translate-x-1/2 transition-[filter] duration-200 ${hasBlur && step !== 3 ? 'blur pointer-events-none' : 'z-20'}`}
+        className={`absolute bottom-[calc(18px*var(--size-ratio))] left-1/2 -translate-x-1/2 transition-[filter] duration-200 ${hasBlur ? 'blur pointer-events-none' : 'z-20'}`}
         cards={[CHARACTER_1, CHARACTER_2, CHARACTER_3, CHARACTER_6, CHARACTER_8]}
         disabled
         selectedCards={[]}
@@ -91,27 +85,6 @@ export const Rules = (props: Props) => {
       </AnimatePresence>
       <AnimatePresence>
         {step === 3 && (
-          <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className={'flex flex-col items-center absolute top-[calc(155px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
-            >
-              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] pt-[calc(21px*var(--size-ratio))] pr-[calc(21px*var(--size-ratio))] pb-[calc(23px*var(--size-ratio))] pl-[calc(21px*var(--size-ratio))] w-full z-10'}>
-                <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
-                  Чтобы справиться с монстрами, внимательно читай описания карт — в них указаны сильные и слабые стороны персонажей.<br/><span className={'font-extrabold text-[#EA5616]'}>Если ты выбрал правильную комбинацию, то монстр побеждён, если нет — придётся начать уровень сначала.</span>{' '}После каждой победы ты будешь получать нового героя, который пригодится в следующих сражениях
-                </p>
-              </motion.div>
-              <svg className={'absolute bottom-[calc(-1px*var(--size-ratio))] translate-y-full w-[calc(16px*var(--size-ratio))] h-[calc(69px*var(--size-ratio))]'} viewBox="0 0 16 69" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 1C9 0.447715 8.55228 -2.76748e-10 8 0C7.44772 2.76748e-10 7 0.447715 7 1L9 1ZM7.29289 68.7071C7.68342 69.0976 8.31658 69.0976 8.70711 68.7071L15.0711 62.3431C15.4616 61.9526 15.4616 61.3195 15.0711 60.9289C14.6805 60.5384 14.0474 60.5384 13.6569 60.9289L8 66.5858L2.34315 60.9289C1.95262 60.5384 1.31946 60.5384 0.928932 60.9289C0.538408 61.3195 0.538408 61.9526 0.928932 62.3431L7.29289 68.7071ZM8 1L7 1L7 68L8 68L9 68L9 1L8 1Z" fill="white"/>
-              </svg>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {step === 5 && (
           <div className={'absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}

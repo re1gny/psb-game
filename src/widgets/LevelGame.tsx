@@ -40,7 +40,7 @@ const LEVEL_TO_FINISH_NAME: Record<number, string> = {
 export function LevelGame({ level, hasReset, onReset }: Props) {
   const [step, next] = useStep(`level-${level.id}`, hasReset ? 4 : 1);
   const navigate = useNavigate();
-  const [rulesModalOpened, setRulesModalOpened] = useState(false);
+  const [hintsModalOpened, setHintsModalOpened] = useState(false);
   const [cardsSelectorOpened, setCardsSelectorOpened] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
   const [selectedCards, setSelectedCards] = useState<Character[]>([]);
@@ -50,10 +50,12 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
   const remainingLives = useProgressStore(state => state.remainingLives);
   const availableCharacterIds = useProgressStore(state => state.availableCharacters);
   const usedCharacters = useProgressStore(state => state.usedCharacters);
+  const shouldShowLevelHintRules = useProgressStore(state => state.shouldShowLevelHintRules);
   const passLevel = useProgressStore(state => state.passLevel);
   const looseLevel = useProgressStore(state => state.looseLevel);
   const shouldShowCardsRules = useProgressStore(state => state.shouldShowCardsRules);
   const applyCardsRules = useProgressStore(state => state.applyCardsRules);
+  const applyLevelHintRules = useProgressStore(state => state.applyLevelHintRules);
 
   const availableCharacters = ALL_CHARACTERS.filter(character =>
     availableCharacterIds.includes(character.id) && !usedCharacters.includes(character.id)
@@ -81,7 +83,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
   }
 
   const clickMonster = () => {
-    if (step !== 7 || clicks > clicksRequired) {
+    if (step !== 7 || clicks > clicksRequired || hintsModalOpened) {
       return;
     }
 
@@ -108,10 +110,14 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
   }
 
   useEffect(() => {
-    if (step === 3 || step === 5 || step === 8) {
+    if (step === 3 || step === 8 || (step === 5 && !shouldShowLevelHintRules)) {
       setTimeout(() => next(), 600);
     }
-  }, [winnable, step, clicks])
+
+    if (step === 9) {
+      setHintsModalOpened(false)
+    }
+  }, [step])
 
   useEffect(() => {
     if (step === 7 && clicks > clicksRequired) {
@@ -130,7 +136,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
     }
   }, [isApplied, selectedCards])
 
-  const hasBaseBlur = step === 1 || step === 2 || cardsSelectorOpened;
+  const hasBaseBlur = step === 1 || step === 2 || (step === 5 && shouldShowLevelHintRules) || cardsSelectorOpened || hintsModalOpened;
   const hasBlur = hasBaseBlur || step === 9;
   const monsterImageIndex = !winnable ? 0 : clicks > level.tasks.length ?
     level.monsterImages.length - 1
@@ -173,7 +179,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className={`absolute top-[calc(20px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] flex items-center justify-center border-2 border-[#000000] rounded-[calc(10px*var(--size-ratio))] bg-[#EA5616] w-[calc(48px*var(--size-ratio))] h-[calc(48px*var(--size-ratio))] transition-[filter] duration-200 ${hasBlur && !hasBaseBlur ? 'blur pointer-events-none' : 'z-20'}`}
+              className={`absolute top-[calc(20px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] flex items-center justify-center border-2 border-[#000000] rounded-[calc(10px*var(--size-ratio))] bg-[#EA5616] w-[calc(48px*var(--size-ratio))] h-[calc(48px*var(--size-ratio))] transition-[filter] duration-200 ${hasBlur && !hasBaseBlur || (step === 5 && shouldShowLevelHintRules) ? 'blur pointer-events-none' : 'z-20'}`}
               onClick={back}
             >
               <svg className='w-[calc(29px*var(--size-ratio))] h-[calc(29px*var(--size-ratio))]' viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,8 +195,8 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className={`absolute top-[calc(20px*var(--size-ratio))] right-[calc(20px*var(--size-ratio))] flex items-center justify-center border-2 border-[#000000] rounded-[calc(10px*var(--size-ratio))] bg-[#EA5616] w-[calc(48px*var(--size-ratio))] h-[calc(48px*var(--size-ratio))] transition-[filter] duration-200 ${hasBlur && !hasBaseBlur ? 'blur pointer-events-none' : 'z-20'}`}
-              onClick={() => setRulesModalOpened(true)}
+              className={`absolute top-[calc(20px*var(--size-ratio))] right-[calc(20px*var(--size-ratio))] flex items-center justify-center border-2 border-[#000000] rounded-[calc(10px*var(--size-ratio))] bg-[#EA5616] w-[calc(48px*var(--size-ratio))] h-[calc(48px*var(--size-ratio))] transition-[filter] duration-200 ${(hasBlur && !hasBaseBlur || step < 3) && (step !== 5 || !shouldShowLevelHintRules) ? 'blur pointer-events-none' : 'z-20'}`}
+              onClick={() => step > 5 && setHintsModalOpened(true)}
             >
               <svg className='w-[calc(21px*var(--size-ratio))] h-[calc(33px*var(--size-ratio))]' viewBox="0 0 21 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.09114 22.8442V22.4488C7.10128 20.6136 7.27365 19.1535 7.60824 18.0686C7.95298 16.9837 8.43966 16.1118 9.0683 15.4527C9.69693 14.7835 10.4624 14.1701 11.3648 13.6124C11.9833 13.2271 12.5359 12.8064 13.0226 12.3501C13.5194 11.8837 13.9098 11.3666 14.1937 10.7988C14.4776 10.2208 14.6195 9.577 14.6195 8.86725C14.6195 8.06625 14.432 7.37171 14.0568 6.78363C13.6817 6.19555 13.1747 5.73929 12.5359 5.41483C11.9073 5.09037 11.2026 4.92814 10.4219 4.92814C9.702 4.92814 9.0176 5.0853 8.36869 5.39962C7.72991 5.7038 7.1976 6.17021 6.77175 6.79884C6.35604 7.41734 6.12284 8.20313 6.07214 9.15622H0.657771C0.708467 7.22976 1.17487 5.61762 2.05699 4.31979C2.94925 3.02196 4.1254 2.04859 5.58546 1.39968C7.05565 0.750765 8.67793 0.426308 10.4523 0.426308C12.3889 0.426308 14.0923 0.765974 15.5625 1.44531C17.0428 2.12464 18.1936 3.09294 19.0149 4.35021C19.8463 5.59734 20.2621 7.07767 20.2621 8.79121C20.2621 9.94708 20.0745 10.9813 19.6993 11.8938C19.3343 12.8064 18.8121 13.6175 18.1328 14.3272C17.4535 15.037 16.6474 15.6707 15.7146 16.2284C14.8933 16.7353 14.219 17.2626 13.6918 17.8101C13.1747 18.3576 12.7894 19.0015 12.5359 19.7416C12.2926 20.4716 12.1658 21.374 12.1557 22.4488V22.8442H7.09114ZM9.73749 32.3346C8.82495 32.3346 8.03916 32.0101 7.38011 31.3612C6.72106 30.7123 6.39153 29.9214 6.39153 28.9886C6.39153 28.0761 6.72106 27.2954 7.38011 26.6465C8.03916 25.9976 8.82495 25.6731 9.73749 25.6731C10.6399 25.6731 11.4206 25.9976 12.0797 26.6465C12.7489 27.2954 13.0834 28.0761 13.0834 28.9886C13.0834 29.6071 12.9263 30.1699 12.612 30.6768C12.3078 31.1838 11.9022 31.5894 11.3953 31.8935C10.8984 32.1876 10.3458 32.3346 9.73749 32.3346Z" fill="white"/>
@@ -415,6 +421,33 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
           )}
         </AnimatePresence>
         <AnimatePresence>
+          {step === 5 && shouldShowLevelHintRules && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className={'flex flex-col items-center absolute top-[calc(229px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+            >
+              <svg className={'absolute right-[calc(60px*var(--size-ratio))] bottom-[calc(-7px*var(--size-ratio))] w-[calc(114px*var(--size-ratio))] h-[calc(183px*var(--size-ratio))]'} viewBox="0 0 114 183" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.45918 181.885C3.52257 182.434 3.1292 182.93 2.58057 182.993C2.03193 183.057 1.53578 182.663 1.4724 182.115L2.46578 182L3.45918 181.885ZM113.574 6.18083C114.026 6.49759 114.136 7.12114 113.819 7.57355L108.657 14.9461C108.34 15.3985 107.717 15.5085 107.264 15.1917C106.812 14.8749 106.702 14.2514 107.019 13.799L111.607 7.24562L105.054 2.65722C104.602 2.34045 104.492 1.71691 104.808 1.2645C105.125 0.812081 105.749 0.702113 106.201 1.01888L113.574 6.18083ZM2.46578 182L1.4724 182.115C-3.07233 142.781 2.77934 102.654 20.7692 70.3989C38.7751 38.1144 68.9218 13.7582 112.826 6.0152L113 7L113.174 7.9848C69.8896 15.6184 40.243 39.5885 22.5159 71.3731C4.77265 103.187 -1.04848 142.872 3.45918 181.885L2.46578 182Z" fill="white"/>
+              </svg>
+              <div className={'flex flex-col items-center absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
+                <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] py-[calc(20px*var(--size-ratio))] px-[calc(34px*var(--size-ratio))] w-full z-10'}>
+                  <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>
+                    Здесь ты всегда сможешь{'\n'}вернуться к подсказке{'\n'}и перечитать её
+                  </p>
+                </motion.div>
+                <Button className={'mt-[calc(20px*var(--size-ratio))] shrink-0'} onClick={() => {
+                  applyLevelHintRules();
+                  next();
+                }}>
+                  Далее
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
           {step === 6 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -503,6 +536,7 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
           )}
         </AnimatePresence>
         <CardsSelector
+          hints={level.characterHints}
           withRules={shouldShowCardsRules}
           opened={cardsSelectorOpened}
           applied={isApplied}
@@ -511,15 +545,25 @@ export function LevelGame({ level, hasReset, onReset }: Props) {
         />
       </div>
       <AnimatePresence>
-        {rulesModalOpened && (
-          <Rules
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className={'!absolute top-0 left-0 w-full h-full z-50 bg-[#FFFFFF]'} 
-            onPlay={() => setRulesModalOpened(false)}
-          />
+        {hintsModalOpened && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className={'flex flex-col items-center absolute top-[calc(148px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+          >
+            <div className={'flex flex-col items-center absolute top-0 left-1/2 -translate-x-1/2 max-w-[calc(375px*var(--size-ratio))] max-h-[calc(667px*var(--size-ratio))] w-full h-full'}>
+              <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] pr-[calc(25px*var(--size-ratio))] w-full z-10'}>
+                <h3 className={'whitespace-pre-line font-gilroy font-extrabold text-[calc(20px*var(--size-ratio))] leading-[100%] text-[#EA5616] text-center'}>Подсказка</h3>
+                <p className={'whitespace-pre-line mt-[calc(20px*var(--size-ratio))] font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000]'}>
+                  {level.hintText}
+                </p>
+              </motion.div>
+              <Button className={'mt-[calc(20px*var(--size-ratio))] shrink-0'} onClick={() => setHintsModalOpened(false)}>
+                Продолжить
+              </Button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
