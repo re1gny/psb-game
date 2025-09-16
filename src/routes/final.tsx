@@ -80,7 +80,7 @@ function Component() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className={'flex flex-col items-center absolute top-[calc(84px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
+                className={'flex flex-col items-center absolute top-[calc(38px*var(--size-ratio))] left-[calc(20px*var(--size-ratio))] w-[calc(100%-(40px*var(--size-ratio)))]'}
               >
                 <motion.div className={'relative bg-[#FFFFFF] border-2 border-[#000000] rounded-[calc(7.41px*var(--size-ratio))] p-[calc(20px*var(--size-ratio))] w-full z-10'}>
                   <p className={'whitespace-pre-line font-gilroy font-light text-[calc(16px*var(--size-ratio))] leading-[105%] tracking-[0.01em] text-[#000000] text-center'}>

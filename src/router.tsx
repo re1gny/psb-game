@@ -8,7 +8,7 @@ export function createRouter() {
     defaultErrorComponent: () => 'Произошла ошибка',
     defaultNotFoundComponent: () => 'Страница не найдена',
     scrollRestoration: true,
-    history: createMemoryHistory(),
+    // history: createMemoryHistory(),
   })
 
   return router

@@ -1,0 +1,1 @@
+import{j as e,N as o}from"./index-CFtGfFjD.js";import{u as s}from"./progressStore-Bw64P2sz.js";const c=function(){const r=s(t=>t.isPersisted),n=s(t=>t.isRestarted),a=s(t=>t.shouldShowStartRules);return r&&!n?e.jsx(o,{to:a?"/rules":"/path",replace:!0}):e.jsx(o,{to:"/start",replace:!0})};export{c as component};
